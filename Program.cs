@@ -25,6 +25,7 @@ namespace SimleXmlReader
         public string RegistrationDate { get; set; }
         public string TemproraryNumber { get; set; }
         public string TemproraryDate { get; set; }
+
     }
     class Program
     {
@@ -42,11 +43,8 @@ namespace SimleXmlReader
                     var tempObj = Xdoc.ToString();   //xml в стрингу
                     XDocument doc = XDocument.Parse(tempObj);
                     XElement result = doc.XPathSelectElement("descendant::G01_N[G01]");
-                    Console.WriteLine(result);
-                    Console.ReadLine();
 
-
-                    ParsedInfo[] NodeInfo = null;
+                    List<ParsedInfo> NodeInfo = new List<ParsedInfo>();
                     if (result != null)
                     {
                         IEnumerable<XElement> keyWords = result.Elements("G01");
@@ -60,16 +58,20 @@ namespace SimleXmlReader
                                         TransportNumber = itm.Element("TR_NOMER").Value,
                                         //Category = itm.Element("category").Value,
                                         //Id = itm.Element("id").Value,
-                                    }).ToArray<ParsedInfo>();
+                                    }).ToList();
                     }
                     else
                     {
                         Console.WriteLine("Код по прежнему говно. Попробуй еще раз!");
                     }
-
+                    foreach (ParsedInfo p in NodeInfo)
+                    {
+                        Console.WriteLine(p.TransportNumber);
+                    }
                     Console.ReadLine();
-                }
+                } 
             }
+           
         }
     }
 }
