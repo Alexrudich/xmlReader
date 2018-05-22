@@ -1,28 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
+using System.Xml.XPath;
 
-namespace XmlReader
+namespace SimleXmlReader
 {
+    class ParsedInfo
+    {
+        public string TransportNumber { get; set; }
+        public string SMGSNumber { get; set; }
+        public string SMGSDate { get; set; }
+        public string DeclaractionNumber { get; set; }
+        public string DeclarationDate { get; set; }
+        public string AccountNumber { get; set; }
+        public string AccountDate { get; set; }
+        public string RegistrationNumber { get; set; }
+        public string RegistrationDate { get; set; }
+        public string TemproraryNumber { get; set; }
+        public string TemproraryDate { get; set; }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(@"C:\Users\a.rudich\Documents\Projects-work\Metanit\XmlReader\products.xml");
-            XmlNodeList nodeList = xmlDoc.DocumentElement.SelectNodes("/Table/Product");
-            string proID = "", proName = "", price = "";
-            foreach (XmlNode node in nodeList)
+            string RootFolder = ConfigurationManager.AppSettings["RootFolder"];
+            DirectoryInfo di = new DirectoryInfo(RootFolder);
+            FileInfo[] files = di.GetFiles("*.xml"); // Read files xml from folder
+            var temp = files.Length;
+            foreach (FileInfo file in files)
             {
-                proID = node.SelectSingleNode("Product_id").InnerText;
-                proName = node.SelectSingleNode("Product_name").InnerText;
-                price = node.SelectSingleNode("Product_price").InnerText;
-                Console.WriteLine(proID + " " + proName + " " + price);
+                if (file != null)
+                {
+                    XDocument Xdoc = XDocument.Load(file.FullName);
+                    var tempObj = Xdoc.ToString();   //xml в стрингу
+                    XDocument doc = XDocument.Parse(tempObj);
+                    XElement result = doc.XPathSelectElement("descendant::G01_N[G01]");
+                    Console.WriteLine(result);
+                    Console.ReadLine();
+
+
+                    ParsedInfo[] NodeInfo = null;
+                    if (result != null)
+                    {
+                        IEnumerable<XElement> keyWords = result.Elements("G01");
+                        NodeInfo = (from itm in keyWords
+                                    where itm.Element("TR_NOMER") != null
+                                        //&& itm.Element("category").Value == "verb"
+                                        //&& itm.Element("id") != null
+                                        //&& itm.Element("base") != null
+                                    select new ParsedInfo()
+                                    {
+                                        TransportNumber = itm.Element("TR_NOMER").Value,
+                                        //Category = itm.Element("category").Value,
+                                        //Id = itm.Element("id").Value,
+                                    }).ToArray<ParsedInfo>();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Код по прежнему говно. Попробуй еще раз!");
+                    }
+
+                    Console.ReadLine();
+                }
             }
-            Console.ReadLine();
         }
     }
 }
