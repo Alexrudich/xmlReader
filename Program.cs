@@ -58,75 +58,81 @@ namespace SimleXmlReader
                     #endregion
                     #region SMGSNumber & SMGSDate
                     XElement SMGS = doc.XPathSelectElement("descendant::Declarant[G02]");
-                    List<ParsedInfo> SMGList = new List<ParsedInfo>();
                     if (SMGS != null)
                     {
                         IEnumerable<XElement> keyWords = SMGS.Elements("G02");
-                        SMGList = (from itm in keyWords
+                        NodeInfo.AddRange((from itm in keyWords
                                     where itm.Element("KOD_DOC") != null && itm.Element("KOD_DOC").Value == "02013"
 
                                    select new ParsedInfo()
                                     {
                                         SMGSNumber = itm.Element("NOM_DOC").Value,
                                         SMGSDate = itm.Element("DATE_DOC").Value,
-                                    }).ToList();
+                                    }));
                     }
                     #endregion
                     #region DeclaractionNumber & DeclarationDate
                     XElement TD = doc.XPathSelectElement("descendant::Declarant[G02]");
-                    List<ParsedInfo> TDList = new List<ParsedInfo>();
                     if (TD != null)
                     {
                         IEnumerable<XElement> keyWords = TD.Elements("G02");
-                        TDList = (from itm in keyWords
+                        NodeInfo.AddRange((from itm in keyWords
                                    where itm.Element("KOD_DOC") != null && itm.Element("KOD_DOC").Value == "09013"
 
                                   select new ParsedInfo()
                                    {
                                        DeclaractionNumber = itm.Element("NOM_DOC").Value,
                                        DeclarationDate = itm.Element("DATE_DOC").Value,
-                                   }).ToList();
+                                   }));
                     }
                     #endregion
                     #region AccountNumber & AccountDate
                     XElement account = doc.XPathSelectElement("descendant::Declarant[G02]");
-                    List<ParsedInfo> accountList = new List<ParsedInfo>();
                     if (account != null)
                     {
                         IEnumerable<XElement> keyWords = account.Elements("G02");
-                        SMGList = (from itm in keyWords
+                        NodeInfo.AddRange((from itm in keyWords
                                    where itm.Element("KOD_DOC") != null && itm.Element("KOD_DOC").Value == "04021"
 
                                    select new ParsedInfo()
                                    {
                                        AccountNumber = itm.Element("NOM_DOC").Value,
                                        AccountDate = itm.Element("DATE_DOC").Value,
-                                   }).ToList();
+                                   }));
                     }
                     #endregion
                     #region RegistrationNumber & RegistrationDate
                     XElement RegNumber = doc.XPathSelectElement("descendant::Custom[G_B/REGNUM_PTO]");
-                    List<ParsedInfo> regList = new List<ParsedInfo>();
                     if (RegNumber != null)
                     {
                         IEnumerable<XElement> keyWords = RegNumber.Elements("G_B");
-                        regList = (from itm in keyWords
+                        NodeInfo.AddRange((from itm in keyWords
                                    where itm.Element("REGNUM_PTO") != null && itm.Element("DATE_REG") != null
 
                                    select new ParsedInfo()
                                    {
                                        RegistrationNumber = itm.Element("REGNUM_PTO").Value,
                                        RegistrationDate = itm.Element("DATE_REG").Value,
-                                   }).ToList();
+                                   }));
                     }
                     #endregion
-                    NodeInfo.AddRange(SMGList);
-                    NodeInfo.AddRange(accountList);
-                    NodeInfo.AddRange(TDList);
-                    NodeInfo.AddRange(regList);
-                } 
-            }
-           
+                    #region TemproraryNumber & TemproraryDate
+                    XElement TempNumber = doc.XPathSelectElement("descendant::Custom[G_B/REGNUM_PTO]");
+                    if (TempNumber != null)
+                    {
+                        IEnumerable<XElement> keyWords = RegNumber.Elements("G04");
+                        NodeInfo.AddRange((from itm in keyWords
+                                           where itm.Element("NUM_RAZR") != null && itm.Element("DATE_RAZR") != null
+
+                                           select new ParsedInfo()
+                                           {
+                                               TemproraryNumber = itm.Element("NUM_RAZR").Value,
+                                               TemproraryDate = itm.Element("DATE_RAZR").Value,
+                                           }));
+                    }
+                    #endregion
+                }
+            } 
         }
     }
 }
