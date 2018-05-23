@@ -124,19 +124,6 @@ namespace SimleXmlReader
                     NodeInfo.AddRange(accountList);
                     NodeInfo.AddRange(TDList);
                     NodeInfo.AddRange(regList);
-                    foreach (ParsedInfo p in NodeInfo)
-                    {
-                        Console.WriteLine("TransportNumber - {0}", p.TransportNumber);
-                        Console.WriteLine("SMGSNumber - {0}", p.SMGSNumber);
-                        Console.WriteLine("SMGSDate - {0}", p.SMGSDate);
-                        Console.WriteLine("AccountNumber - {0}", p.AccountNumber);
-                        Console.WriteLine("AccountDate - {0}", p.AccountDate);
-                        Console.WriteLine("DeclaractionNumber - {0}", p.DeclaractionNumber);
-                        Console.WriteLine("DeclarationDate - {0}", p.DeclarationDate);
-                        Console.WriteLine("RegistrationNumber - {0}", p.RegistrationNumber);
-                        Console.WriteLine("RegistrationDate - {0}", p.RegistrationDate);
-                    }
-                    Console.ReadLine();
                 } 
             }
            
