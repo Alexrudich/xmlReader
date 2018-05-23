@@ -42,7 +42,7 @@ namespace SimleXmlReader
                     var tempObj = xdoc.ToString();   //xml to string
                     XDocument doc = XDocument.Parse(tempObj);
                     List<ParsedInfo> NodeInfo = new List<ParsedInfo>();
-                   
+                    #region TransportNumber
                     XElement TrNumber = doc.XPathSelectElement("descendant::G01_N[G01]"); // Path to parent node + [child node]
                     if (TrNumber != null)
                     {
@@ -55,14 +55,15 @@ namespace SimleXmlReader
                                         TransportNumber = itm.Element("TR_NOMER").Value,
                                     }).ToList();
                     }
+                    #endregion
+                    #region SMGSNumber & SMGSDate
                     XElement SMGS = doc.XPathSelectElement("descendant::Declarant[G02]");
                     List<ParsedInfo> SMGList = new List<ParsedInfo>();
                     if (SMGS != null)
                     {
-                        IEnumerable<XElement> keyWords1 = SMGS.Elements("G02");
-                        SMGList = (from itm in keyWords1
+                        IEnumerable<XElement> keyWords = SMGS.Elements("G02");
+                        SMGList = (from itm in keyWords
                                     where itm.Element("KOD_DOC") != null && itm.Element("KOD_DOC").Value == "02013"
-
 
                                    select new ParsedInfo()
                                     {
@@ -70,17 +71,70 @@ namespace SimleXmlReader
                                         SMGSDate = itm.Element("DATE_DOC").Value,
                                     }).ToList();
                     }
-                   
-                    else
+                    #endregion
+                    #region DeclaractionNumber & DeclarationDate
+                    XElement TD = doc.XPathSelectElement("descendant::Declarant[G02]");
+                    List<ParsedInfo> TDList = new List<ParsedInfo>();
+                    if (TD != null)
                     {
-                        Console.WriteLine("Код по прежнему говно. Попробуй еще раз!");
+                        IEnumerable<XElement> keyWords = TD.Elements("G02");
+                        TDList = (from itm in keyWords
+                                   where itm.Element("KOD_DOC") != null && itm.Element("KOD_DOC").Value == "09013"
+
+                                  select new ParsedInfo()
+                                   {
+                                       DeclaractionNumber = itm.Element("NOM_DOC").Value,
+                                       DeclarationDate = itm.Element("DATE_DOC").Value,
+                                   }).ToList();
                     }
+                    #endregion
+                    #region AccountNumber & AccountDate
+                    XElement account = doc.XPathSelectElement("descendant::Declarant[G02]");
+                    List<ParsedInfo> accountList = new List<ParsedInfo>();
+                    if (account != null)
+                    {
+                        IEnumerable<XElement> keyWords = account.Elements("G02");
+                        SMGList = (from itm in keyWords
+                                   where itm.Element("KOD_DOC") != null && itm.Element("KOD_DOC").Value == "04021"
+
+                                   select new ParsedInfo()
+                                   {
+                                       AccountNumber = itm.Element("NOM_DOC").Value,
+                                       AccountDate = itm.Element("DATE_DOC").Value,
+                                   }).ToList();
+                    }
+                    #endregion
+                    #region RegistrationNumber & RegistrationDate
+                    XElement RegNumber = doc.XPathSelectElement("descendant::Custom[G_B/REGNUM_PTO]");
+                    List<ParsedInfo> regList = new List<ParsedInfo>();
+                    if (RegNumber != null)
+                    {
+                        IEnumerable<XElement> keyWords = RegNumber.Elements("G_B");
+                        regList = (from itm in keyWords
+                                   where itm.Element("REGNUM_PTO") != null && itm.Element("DATE_REG") != null
+
+                                   select new ParsedInfo()
+                                   {
+                                       RegistrationNumber = itm.Element("REGNUM_PTO").Value,
+                                       RegistrationDate = itm.Element("DATE_REG").Value,
+                                   }).ToList();
+                    }
+                    #endregion
                     NodeInfo.AddRange(SMGList);
+                    NodeInfo.AddRange(accountList);
+                    NodeInfo.AddRange(TDList);
+                    NodeInfo.AddRange(regList);
                     foreach (ParsedInfo p in NodeInfo)
                     {
                         Console.WriteLine("TransportNumber - {0}", p.TransportNumber);
                         Console.WriteLine("SMGSNumber - {0}", p.SMGSNumber);
                         Console.WriteLine("SMGSDate - {0}", p.SMGSDate);
+                        Console.WriteLine("AccountNumber - {0}", p.AccountNumber);
+                        Console.WriteLine("AccountDate - {0}", p.AccountDate);
+                        Console.WriteLine("DeclaractionNumber - {0}", p.DeclaractionNumber);
+                        Console.WriteLine("DeclarationDate - {0}", p.DeclarationDate);
+                        Console.WriteLine("RegistrationNumber - {0}", p.RegistrationNumber);
+                        Console.WriteLine("RegistrationDate - {0}", p.RegistrationDate);
                     }
                     Console.ReadLine();
                 } 

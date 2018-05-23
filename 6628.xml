@@ -1,1 +1,246 @@
-<?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://www.w3.org/2005/08/addressing"><s:Header><a:Action s:mustUnderstand="1">http://gtk.gov.by/DeclarantService/Request</a:Action><a:ReplyTo><a:Address>http://172.31.1.101/CustomsWebService/Service.svc</a:Address></a:ReplyTo><a:MessageID>urn:uuid:6b857264-75ef-47fd-840e-1bd064d1fa2b</a:MessageID><a:To s:mustUnderstand="1">http://172.31.1.101/DeclarantService</a:To><CustomsHeader xmlns="http://gtk.gov.by/CustomsService" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><CustomsInfo><CustomsCode>06604</CustomsCode></CustomsInfo><MessageInfo><CreationDateTime>2017-07-07T09:10:45.096723Z</CreationDateTime><MessageType>CSTM.0014</MessageType><MessageVersion>1.0.0</MessageVersion><PayloadVersion>1.0.0</PayloadVersion></MessageInfo><ParticipantInfo><ParticipantID>5d5e9799-ab99-4204-8a81-f5f790a61d14</ParticipantID></ParticipantInfo></CustomsHeader></s:Header><s:Body><DocumentReleaseNotice><NoticeInfo Id="503ab24ce50648169387e1d09b60b301"><Document><DocumentID>6632280a-5e52-11e7-984f-003048faaa26</DocumentID><DocumentType>UV</DocumentType><DocumentTypeVersion>1.1.0</DocumentTypeVersion><DocumentBody><UVD_ZTK xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><Declarant ID="61504455-044D-A208-615208681439"><INFO_D><DOCID>6628</DOCID><NOM_LIC>ВА-0602/0000221</NOM_LIC><NOMU>006628</NOMU><YEARREG>7</YEARREG><JOURN>9</JOURN><NAPRAVL>2</NAPRAVL><PR_TOV>Т</PR_TOV><PR_STZ>0</PR_STZ></INFO_D><G_A><DATEU>01.07.2017</DATEU><TIMEU>13:48:00</TIMEU><NUMBERU>ВА-0602/0000221/79006628</NUMBERU><FIO_ZL>Лазуко А.С.</FIO_ZL></G_A><G01_N><VES_NETTO>0</VES_NETTO><VES_BR>13388</VES_BR><CELL>03</CELL><G01><TR_NOMER>GLDU7367067/99</TR_NOMER></G01></G01_N><G02><KOD_DOC>02013</KOD_DOC><NOM_DOC>0601763</NOM_DOC><DATE_DOC>27.06.2017</DATE_DOC></G02><G02><KOD_DOC>04021</KOD_DOC><NOM_DOC>MDOJOICR06170420G</NOM_DOC><DATE_DOC>20.04.2017</DATE_DOC></G02><G02><KOD_DOC>04021</KOD_DOC><NOM_DOC>MDOJOICR06170420H</NOM_DOC><DATE_DOC>20.04.2017</DATE_DOC></G02><G02><KOD_DOC>09013</KOD_DOC><NOM_DOC>11206601/300617/0110500</NOM_DOC><DATE_DOC>30.06.2017</DATE_DOC></G02><G03><G081>190878056</G081><G082>СООО "МИДЕА-ГОРИЗОНТ"</G082></G03></Declarant><Custom ID="bd763849eac647c2b43106850ea4d459"><INFO_C><STATUS>2</STATUS><STATUS_PRIM>Уведомление полностью снято с контроля</STATUS_PRIM><LNP_PR_END>1065</LNP_PR_END></INFO_C><G_B><REGNUM_PTO>06604/010779006973</REGNUM_PTO><DATE_REG>01.07.2017</DATE_REG><TIME_REG>14:43:45</TIME_REG></G_B><G04><DATE_RAZR>01.07.2017</DATE_RAZR><TIME_RAZR>15:07:05</TIME_RAZR><NUM_RAZR>06604/79006877</NUM_RAZR><LNP_RAZR>653</LNP_RAZR><DATE_VH>01.09.2017</DATE_VH><PR_VYGR>0</PR_VYGR></G04><G07><NUM_NEXT>06533/72032161</NUM_NEXT><DATE_NEXT>06.07.2017</DATE_NEXT><LNP_NEXT>1065</LNP_NEXT><VES_NETTO>0.00</VES_NETTO><VES_BR>13388.00</VES_BR><PR_END>2</PR_END></G07></Custom><Signature Id="SID-61504455-044D-A208-615208681439" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></CanonicalizationMethod><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#bign-with-hbelt"></SignatureMethod><Reference URI="#61504455-044D-A208-615208681439"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></Transform></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"></DigestMethod><DigestValue>GqFMr+1OUybWYeLo+jOGfDnENnC/BTZ6flA6rMpaywY=</DigestValue></Reference><Reference URI="#TSID-61504455-044D-A208-615208681439"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></Transform></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"></DigestMethod><DigestValue>F8/xzuPZLg8gurxE1CEDs1bqkn8+TA2t/UMSSUsx9eI=</DigestValue></Reference></SignedInfo><SignatureValue>ooDrlKmiwE5Oi0OqoD70K+Wy2bMf+Z6vLO1DzBPwE6bWoFuWtDuqI0L/pm9Rtg1/</SignatureValue><KeyInfo><X509Data><X509IssuerSerial><X509IssuerName>E=rca@pki.gov.by, STREET="пр-т Машерова, 25", L=г. Минск, S=Минская, C=BY, CN=Республиканский удостоверяющий центр ГосСУОК, O="Республиканское унитарное предприятие ""Национальный центр электронных услуг"""</X509IssuerName><X509SerialNumber>20083648182063658627229573274</X509SerialNumber></X509IssuerSerial><X509SKI>gVhtyaBGGOe+x+LFmx0S6mJlvZM=</X509SKI><X509Certificate>MIIFpDCCBV6gAwIBAgIMQOTN7YV6X5EAAGCaMA0GCSpwAAIAImUtDAUAMIIBljGBozCBoAYDVQQKHoGYBCAENQRBBD8EQwQxBDsEOAQ6BDAEPQRBBDoEPgQ1ACAEQwQ9BDgEQgQwBEAEPQQ+BDUAIAQ/BEAENQQ0BD8EQAQ4BE8EQgQ4BDUAIAAiBB0EMARGBDgEPgQ9BDAEOwRMBD0ESwQ5ACAERgQ1BD0EQgRAACAETQQ7BDUEOgRCBEAEPgQ9BD0ESwRFACAEQwRBBDsEQwQzACIxYTBfBgNVBAMeWAQgBDUEQQQ/BEMEMQQ7BDgEOgQwBD0EQQQ6BDgEOQAgBEMENAQ+BEEEQgQ+BDIENQRABE8ETgRJBDgEOQAgBEYENQQ9BEIEQAAgBBMEPgRBBCEEIwQeBBoxCzAJBgNVBAYTAkJZMRcwFQYDVQQIHg4EHAQ4BD0EQQQ6BDAETzEZMBcGA1UEBx4QBDMALgAgBBwEOAQ9BEEEOjErMCkGA1UECR4iBD8EQAAtBEIAIAQcBDAESAQ1BEAEPgQyBDAALAAgADIANTEdMBsGCSqGSIb3DQEJARYOcmNhQHBraS5nb3YuYnkwIhgPMjAxNjA4MjUwNzA4MjdaGA8yMDE4MDgyNDIwNTk1OVowggFnMUswSQYDVQQJDELRg9C7LtCR0YDQtdGB0YIt0JvQuNGC0L7QstGB0LrQsNGPLCDQtC4xMywg0LrQsNCxLjIwMywyMTAsIDIxMiwyMTQxSTBHBgNVBAMMQNCT0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90L7QtSDQv9GA0LXQtNC/0YDQuNGP0YLQuNC1ICLQkdCi0JvQpiIxFTATBgNVBAQMDNCb0LDQt9GD0LrQvjEgMB4GCSqGSIb3DQEJARYRZGVrX2tpdkBiZWxpbnQuYnkxCzAJBgNVBAYTAkJZMUkwRwYDVQQKDEDQk9C+0YHRg9C00LDRgNGB0YLQstC10L3QvdC+0LUg0L/RgNC10LTQv9GA0LjRj9GC0LjQtSAi0JHQotCb0KYiMSQwIgYDVQQpDBvQkNC90L3QsCDQodC10YDQs9C10LXQstC90LAxFjAUBgNVBAcMDdCzLtCc0LjQvdGB0LowXTAYBgoqcAACACJlLQIBBgoqcAACACJlLQMBA0EAMQ3AHBInbT9LqoCHgWWX1JvZVT9DOzXEKfTnyjl0OmDANkNhmlSnOB1lrh8gU0zWvTvFyDTFnWyrfIgrrggICaOCAbAwggGsMB8GA1UdIwQYMBaAFDlegNXk2RxZPYZXdKec1b1BfTuAMAkGA1UdEwQCMAAwDwYDVR0PAQH/BAUDAwe4ADATBgNVHSUEDDAKBggrBgEFBQcDAjAdBgNVHQ4EFgQUgVhtyaBGGOe+x+LFmx0S6mJlvZMwMgYIKnABAgEBBQQEJjAkMCKADzIwMTYwODI1MDcwOTM2WoEPMjAzMTA4MjUwNzA5MzZaMCEGCSpwAQIBAQEBAgQUHhIAMQA5ADEAMQA4ADQAMgAzADUwKwYJKnABAgEBAQEBBB4eHAA0ADIAMgAxADEAOAAyAEEAMQAwADcAUABCADIwPQYJKnABAgEBAQIBBDAeLgAxAC4AMgAuADEAMQAyAC4AMQAuADIALgAxAC4AMQAuADEALgAyAC4AMQAuADQwdgYIKnABAgEBBQEEah5oBCEEPwQ1BEYEOAQwBDsEOARBBEIAIAQ/BD4AIARCBDAEPAQ+BDYENQQ9BD0EPgQ8BEMAIAQ0BDUEOgQ7BDAEQAQ4BEAEPgQyBDAEPQQ4BE4AIAAxACAEOgQwBEIENQQzBD4EQAQ4BDgwDQYJKnAAAgAiZS0MBQADMQCa85Or4qWsZpZGSojk9yO+3dtEqVj9lCHecYY5zp7SHB6Z100vuLInb2PtXqNgs4k=</X509Certificate></X509Data></KeyInfo><Object Id="TSID-61504455-044D-A208-615208681439"><SignatureProperties><SignatureProperty Target="SID-61504455-044D-A208-615208681439"><SigningTime xmlns="http://lab119.net/STBCrypt">2017-07-01T12:40:20.2578338Z</SigningTime></SignatureProperty></SignatureProperties></Object></Signature><Signature Id="SID-bd763849eac647c2b43106850ea4d459" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></CanonicalizationMethod><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#bign-with-hbelt"></SignatureMethod><Reference URI="#bd763849eac647c2b43106850ea4d459"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></Transform></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"></DigestMethod><DigestValue>S2QuCcE3GaqAUFKA0O11HSPqt+K6CHXSs6t3/4qgf9A=</DigestValue></Reference><Reference URI="#61504455-044D-A208-615208681439"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></Transform></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"></DigestMethod><DigestValue>GqFMr+1OUybWYeLo+jOGfDnENnC/BTZ6flA6rMpaywY=</DigestValue></Reference><Reference URI="#SID-61504455-044D-A208-615208681439"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></Transform></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"></DigestMethod><DigestValue>X7c7QAo6vmvGWvjar6XFfKZ9aApa9DqbqFknpHsW9PI=</DigestValue></Reference><Reference URI="#TSID-bd763849eac647c2b43106850ea4d459"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></Transform></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"></DigestMethod><DigestValue>UlQbbL1vInvvBbNfSNWHKDWPhHhxaJ2rbVRM8wB/TQ8=</DigestValue></Reference></SignedInfo><SignatureValue>fsPqPolHy3EyC7wMweSae8un79M43gDxAT5RZ5Lunv4yQ9kTINd2cL0s195dWKiD</SignatureValue><KeyInfo><X509Data><X509IssuerSerial><X509IssuerName>E=rca@pki.gov.by, STREET="пр-т Машерова, 25", L=г. Минск, S=Минская, C=BY, CN=Республиканский удостоверяющий центр ГосСУОК, O="Республиканское унитарное предприятие ""Национальный центр электронных услуг"""</X509IssuerName><X509SerialNumber>20083714894914568228045916872</X509SerialNumber></X509IssuerSerial><X509SKI>399XMuJnegxM2tgrEPKhkHlYuZM=</X509SKI><X509Certificate>MIIE/jCCBLigAwIBAgIMQOTcDghEWgQAAQrIMA0GCSpwAAIAImUtDAUAMIIBljGBozCBoAYDVQQKHoGYBCAENQRBBD8EQwQxBDsEOAQ6BDAEPQRBBDoEPgQ1ACAEQwQ9BDgEQgQwBEAEPQQ+BDUAIAQ/BEAENQQ0BD8EQAQ4BE8EQgQ4BDUAIAAiBB0EMARGBDgEPgQ9BDAEOwRMBD0ESwQ5ACAERgQ1BD0EQgRAACAETQQ7BDUEOgRCBEAEPgQ9BD0ESwRFACAEQwRBBDsEQwQzACIxYTBfBgNVBAMeWAQgBDUEQQQ/BEMEMQQ7BDgEOgQwBD0EQQQ6BDgEOQAgBEMENAQ+BEEEQgQ+BDIENQRABE8ETgRJBDgEOQAgBEYENQQ9BEIEQAAgBBMEPgRBBCEEIwQeBBoxCzAJBgNVBAYTAkJZMRcwFQYDVQQIHg4EHAQ4BD0EQQQ6BDAETzEZMBcGA1UEBx4QBDMALgAgBBwEOAQ9BEEEOjErMCkGA1UECR4iBD8EQAAtBEIAIAQcBDAESAQ1BEAEPgQyBDAALAAgADIANTEdMBsGCSqGSIb3DQEJARYOcmNhQHBraS5nb3YuYnkwHhcNMTYxMjE2MDczMTI3WhcNMTcxMjIxMjA1OTU5WjCCAR8xKzApBgNVBAkMItGD0Lsu0JzQvtCz0LjQu9C10LLRgdC60LDRjywg0LQuNDMxPzA9BgNVBAMMNtCc0LjQvdGB0LrQsNGPINGA0LXQs9C40L7QvdCw0LvRjNC90LDRjyDRgtCw0LzQvtC20L3RjzETMBEGA1UEBAwK0KfQuNCz0LjRgDELMAkGA1UEBhMCQlkxPzA9BgNVBAoMNtCc0LjQvdGB0LrQsNGPINGA0LXQs9C40L7QvdCw0LvRjNC90LDRjyDRgtCw0LzQvtC20L3RjzE0MDIGA1UEKQwr0JLQtdGA0L7QvdC40LrQsCDQkNC70LXQutGB0LDQvdC00YDQvtCy0L3QsDEWMBQGA1UEBwwN0LMu0JzQuNC90YHQujBdMBgGCipwAAIAImUtAgEGCipwAAIAImUtAwEDQQDZBvll8JDP6pSHyyRoiWf3Op0NIwokGig0KWZwBFeq/+bT03a4jgG32Cd7qNVYmkAVQKFmutx9lL/Csvc/go10o4IBVjCCAVIwHwYDVR0jBBgwFoAUOV6A1eTZHFk9hld0p5zVvUF9O4AwCQYDVR0TBAIwADALBgNVHQ8EBAMCA7gwEwYDVR0lBAwwCgYIKwYBBQUHAwIwHQYDVR0OBBYEFN/fVzLiZ3oMTNrYKxDyoZB5WLmTMDIGCCpwAQIBAQUEBCYwJDAigA8yMDE2MTIxNjA3MzQzMVqBDzIwMzExMjE2MDczNDMxWjAhBgkqcAECAQEBAQIEFB4SADEAMAAwADMAMQA5ADgAOAAwMCsGCSpwAQIBAQEBAQQeHhwANAAxADEAMAAyADkANABCADAAMAA4AFAAQgA0MD0GCSpwAQIBAQECAQQwHi4AMQAuADIALgAxADEAMgAuADEALgAyAC4AMQAuADEALgAxAC4AMgAuADEALgA0MCAGCCpwAQIBAQUBBBQeEgQYBD0EQQQ/BDUEOgRCBD4EQDANBgkqcAACACJlLQwFAAMxAFHCU7QK6dyXerZRzWlky3oMvaieNNdQh4T7X39hWYTgoY6/YZJj2Z8LGt6L/FUCQQ==</X509Certificate></X509Data></KeyInfo><Object Id="TSID-bd763849eac647c2b43106850ea4d459"><SignatureProperties><SignatureProperty Target="SID-bd763849eac647c2b43106850ea4d459"><SigningTime xmlns="http://lab119.net/STBCrypt">2017-07-07T09:11:08.71875Z</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></UVD_ZTK></DocumentBody></Document></NoticeInfo><Signature Id="SID-503ab24ce50648169387e1d09b60b301" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></CanonicalizationMethod><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#bign-with-hbelt"></SignatureMethod><Reference URI="#503ab24ce50648169387e1d09b60b301"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></Transform></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"></DigestMethod><DigestValue>Gn1VG0yx7gCXy4OoA7lcOSwXXeVg8Xu1mHlP3E7mfpk=</DigestValue></Reference><Reference URI="#TSID-503ab24ce50648169387e1d09b60b301"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"></Transform></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"></DigestMethod><DigestValue>opHFSV6Bu7Lnx/RtMWXT2JEFy0hJKIlr2A6RvgfemuA=</DigestValue></Reference></SignedInfo><SignatureValue>yUw5RNE5PQxpODyu+WFMJ+jjrDZb7X2e9BcptFd7fx6wM6hcCwKLgfPvcbiQz8GF</SignatureValue><KeyInfo><X509Data><X509IssuerSerial><X509IssuerName>E=rca@pki.gov.by, STREET="пр-т Машерова, 25", L=г. Минск, S=Минская, C=BY, CN=Республиканский удостоверяющий центр ГосСУОК, O="Республиканское унитарное предприятие ""Национальный центр электронных услуг"""</X509IssuerName><X509SerialNumber>20083714894914568228045916872</X509SerialNumber></X509IssuerSerial><X509SKI>399XMuJnegxM2tgrEPKhkHlYuZM=</X509SKI><X509Certificate>MIIE/jCCBLigAwIBAgIMQOTcDghEWgQAAQrIMA0GCSpwAAIAImUtDAUAMIIBljGBozCBoAYDVQQKHoGYBCAENQRBBD8EQwQxBDsEOAQ6BDAEPQRBBDoEPgQ1ACAEQwQ9BDgEQgQwBEAEPQQ+BDUAIAQ/BEAENQQ0BD8EQAQ4BE8EQgQ4BDUAIAAiBB0EMARGBDgEPgQ9BDAEOwRMBD0ESwQ5ACAERgQ1BD0EQgRAACAETQQ7BDUEOgRCBEAEPgQ9BD0ESwRFACAEQwRBBDsEQwQzACIxYTBfBgNVBAMeWAQgBDUEQQQ/BEMEMQQ7BDgEOgQwBD0EQQQ6BDgEOQAgBEMENAQ+BEEEQgQ+BDIENQRABE8ETgRJBDgEOQAgBEYENQQ9BEIEQAAgBBMEPgRBBCEEIwQeBBoxCzAJBgNVBAYTAkJZMRcwFQYDVQQIHg4EHAQ4BD0EQQQ6BDAETzEZMBcGA1UEBx4QBDMALgAgBBwEOAQ9BEEEOjErMCkGA1UECR4iBD8EQAAtBEIAIAQcBDAESAQ1BEAEPgQyBDAALAAgADIANTEdMBsGCSqGSIb3DQEJARYOcmNhQHBraS5nb3YuYnkwHhcNMTYxMjE2MDczMTI3WhcNMTcxMjIxMjA1OTU5WjCCAR8xKzApBgNVBAkMItGD0Lsu0JzQvtCz0LjQu9C10LLRgdC60LDRjywg0LQuNDMxPzA9BgNVBAMMNtCc0LjQvdGB0LrQsNGPINGA0LXQs9C40L7QvdCw0LvRjNC90LDRjyDRgtCw0LzQvtC20L3RjzETMBEGA1UEBAwK0KfQuNCz0LjRgDELMAkGA1UEBhMCQlkxPzA9BgNVBAoMNtCc0LjQvdGB0LrQsNGPINGA0LXQs9C40L7QvdCw0LvRjNC90LDRjyDRgtCw0LzQvtC20L3RjzE0MDIGA1UEKQwr0JLQtdGA0L7QvdC40LrQsCDQkNC70LXQutGB0LDQvdC00YDQvtCy0L3QsDEWMBQGA1UEBwwN0LMu0JzQuNC90YHQujBdMBgGCipwAAIAImUtAgEGCipwAAIAImUtAwEDQQDZBvll8JDP6pSHyyRoiWf3Op0NIwokGig0KWZwBFeq/+bT03a4jgG32Cd7qNVYmkAVQKFmutx9lL/Csvc/go10o4IBVjCCAVIwHwYDVR0jBBgwFoAUOV6A1eTZHFk9hld0p5zVvUF9O4AwCQYDVR0TBAIwADALBgNVHQ8EBAMCA7gwEwYDVR0lBAwwCgYIKwYBBQUHAwIwHQYDVR0OBBYEFN/fVzLiZ3oMTNrYKxDyoZB5WLmTMDIGCCpwAQIBAQUEBCYwJDAigA8yMDE2MTIxNjA3MzQzMVqBDzIwMzExMjE2MDczNDMxWjAhBgkqcAECAQEBAQIEFB4SADEAMAAwADMAMQA5ADgAOAAwMCsGCSpwAQIBAQEBAQQeHhwANAAxADEAMAAyADkANABCADAAMAA4AFAAQgA0MD0GCSpwAQIBAQECAQQwHi4AMQAuADIALgAxADEAMgAuADEALgAyAC4AMQAuADEALgAxAC4AMgAuADEALgA0MCAGCCpwAQIBAQUBBBQeEgQYBD0EQQQ/BDUEOgRCBD4EQDANBgkqcAACACJlLQwFAAMxAFHCU7QK6dyXerZRzWlky3oMvaieNNdQh4T7X39hWYTgoY6/YZJj2Z8LGt6L/FUCQQ==</X509Certificate></X509Data></KeyInfo><Object Id="TSID-503ab24ce50648169387e1d09b60b301"><SignatureProperties><SignatureProperty Target="SID-503ab24ce50648169387e1d09b60b301"><SigningTime xmlns="http://lab119.net/STBCrypt">2017-07-07T09:11:26.734375Z</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></DocumentReleaseNotice></s:Body></s:Envelope>
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://www.w3.org/2005/08/addressing">
+	<s:Header>
+		<a:Action s:mustUnderstand="1">http://gtk.gov.by/DeclarantService/Request</a:Action>
+		<a:ReplyTo>
+			<a:Address>http://172.31.1.101/CustomsWebService/Service.svc</a:Address>
+		</a:ReplyTo>
+		<a:MessageID>urn:uuid:6b857264-75ef-47fd-840e-1bd064d1fa2b</a:MessageID>
+		<a:To s:mustUnderstand="1">http://172.31.1.101/DeclarantService</a:To>
+		<CustomsHeader xmlns="http://gtk.gov.by/CustomsService" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+			<CustomsInfo>
+				<CustomsCode>06604</CustomsCode>
+			</CustomsInfo>
+			<MessageInfo>
+				<CreationDateTime>2017-07-07T09:10:45.096723Z</CreationDateTime>
+				<MessageType>CSTM.0014</MessageType>
+				<MessageVersion>1.0.0</MessageVersion>
+				<PayloadVersion>1.0.0</PayloadVersion>
+			</MessageInfo>
+			<ParticipantInfo>
+				<ParticipantID>5d5e9799-ab99-4204-8a81-f5f790a61d14</ParticipantID>
+			</ParticipantInfo>
+		</CustomsHeader>
+	</s:Header>
+	<s:Body>
+		<DocumentReleaseNotice>
+			<NoticeInfo Id="503ab24ce50648169387e1d09b60b301">
+				<Document>
+					<DocumentID>6632280a-5e52-11e7-984f-003048faaa26</DocumentID>
+					<DocumentType>UV</DocumentType>
+					<DocumentTypeVersion>1.1.0</DocumentTypeVersion>
+					<DocumentBody>
+						<UVD_ZTK xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+							<Declarant ID="61504455-044D-A208-615208681439">
+								<INFO_D>
+									<DOCID>6628</DOCID>
+									<NOM_LIC>ВА-0602/0000221</NOM_LIC>
+									<NOMU>006628</NOMU>
+									<YEARREG>7</YEARREG>
+									<JOURN>9</JOURN>
+									<NAPRAVL>2</NAPRAVL>
+									<PR_TOV>Т</PR_TOV>
+									<PR_STZ>0</PR_STZ>
+								</INFO_D>
+								<G_A>
+									<DATEU>01.07.2017</DATEU>
+									<TIMEU>13:48:00</TIMEU>
+									<NUMBERU>ВА-0602/0000221/79006628</NUMBERU>
+									<FIO_ZL>Лазуко А.С.</FIO_ZL>
+								</G_A>
+								<G01_N>
+									<VES_NETTO>0</VES_NETTO>
+									<VES_BR>13388</VES_BR>
+									<CELL>03</CELL>
+									<G01>
+										<TR_NOMER>GLDU7367067/99</TR_NOMER>  <!-- 1.Номер транспортного средства -->
+									</G01>
+								</G01_N>
+								<G02>
+									<KOD_DOC>02013</KOD_DOC>                 <!-- СМГС -->
+									<NOM_DOC>0601763</NOM_DOC>               <!-- 2.Номер СМГС -->
+									<DATE_DOC>27.06.2017</DATE_DOC>          <!-- 3.Дата СМГС -->
+								</G02>
+								<G02>
+									<KOD_DOC>04021</KOD_DOC>				 <!-- СЧЕТ -->
+									<NOM_DOC>MDOJOICR06170420G</NOM_DOC> 	 <!-- 6.Номер счета -->
+									<DATE_DOC>20.04.2017</DATE_DOC>          <!-- 7.Дата счета -->
+								</G02>
+								<G02>
+									<KOD_DOC>04021</KOD_DOC>				 <!-- СЧЕТ -->
+									<NOM_DOC>MDOJOICR06170420H</NOM_DOC>	 <!-- 6.Номер счета -->
+									<DATE_DOC>20.04.2017</DATE_DOC>			 <!-- 7.Дата счета -->
+								</G02>
+								<G02>										    <!-- ТД -->
+									<KOD_DOC>09013</KOD_DOC>					<!-- 4.Номер ТД -->	
+									<NOM_DOC>11206601/300617/0110500</NOM_DOC>  <!-- 5.Дата ТД -->
+									<DATE_DOC>30.06.2017</DATE_DOC>
+								</G02>
+								<G03>
+									<G081>190878056</G081>
+									<G082>СООО "МИДЕА-ГОРИЗОНТ"</G082>
+								</G03>
+							</Declarant>
+							<Custom ID="bd763849eac647c2b43106850ea4d459">
+								<INFO_C>
+									<STATUS>2</STATUS>
+									<STATUS_PRIM>Уведомление полностью снято с контроля</STATUS_PRIM>
+									<LNP_PR_END>1065</LNP_PR_END>
+								</INFO_C>
+								<G_B>
+									<REGNUM_PTO>06604/010779006973</REGNUM_PTO> <!-- 8.Регистрационный номер ЭУРВ -->
+									<DATE_REG>01.07.2017</DATE_REG>  		    <!-- 9.Дата регистрационного номера ЭУРВ -->
+									<TIME_REG>14:43:45</TIME_REG>
+								</G_B>
+								<G04> 
+									<DATE_RAZR>01.07.2017</DATE_RAZR> <!-- 10.Номер разрешения  на временное хранение -->
+									<TIME_RAZR>15:07:05</TIME_RAZR>   <!-- 11.Дата разрешения  на временное хранение -->
+									<NUM_RAZR>06604/79006877</NUM_RAZR>
+									<LNP_RAZR>653</LNP_RAZR>
+									<DATE_VH>01.09.2017</DATE_VH>
+									<PR_VYGR>0</PR_VYGR>
+								</G04>
+								<G07>
+									<NUM_NEXT>06533/72032161</NUM_NEXT>
+									<DATE_NEXT>06.07.2017</DATE_NEXT>
+									<LNP_NEXT>1065</LNP_NEXT>
+									<VES_NETTO>0.00</VES_NETTO>
+									<VES_BR>13388.00</VES_BR>
+									<PR_END>2</PR_END>
+								</G07>
+							</Custom>
+							<Signature Id="SID-61504455-044D-A208-615208681439" xmlns="http://www.w3.org/2000/09/xmldsig#">
+								<SignedInfo>
+									<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+									<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#bign-with-hbelt"/>
+									<Reference URI="#61504455-044D-A208-615208681439">
+										<Transforms>
+											<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+										</Transforms>
+										<DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"/>
+										<DigestValue>GqFMr+1OUybWYeLo+jOGfDnENnC/BTZ6flA6rMpaywY=</DigestValue>
+									</Reference>
+									<Reference URI="#TSID-61504455-044D-A208-615208681439">
+										<Transforms>
+											<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+										</Transforms>
+										<DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"/>
+										<DigestValue>F8/xzuPZLg8gurxE1CEDs1bqkn8+TA2t/UMSSUsx9eI=</DigestValue>
+									</Reference>
+								</SignedInfo>
+								<SignatureValue>ooDrlKmiwE5Oi0OqoD70K+Wy2bMf+Z6vLO1DzBPwE6bWoFuWtDuqI0L/pm9Rtg1/</SignatureValue>
+								<KeyInfo>
+									<X509Data>
+										<X509IssuerSerial>
+											<X509IssuerName>E=rca@pki.gov.by, STREET="пр-т Машерова, 25", L=г. Минск, S=Минская, C=BY, CN=Республиканский удостоверяющий центр ГосСУОК, O="Республиканское унитарное предприятие ""Национальный центр электронных услуг"""</X509IssuerName>
+											<X509SerialNumber>20083648182063658627229573274</X509SerialNumber>
+										</X509IssuerSerial>
+										<X509SKI>gVhtyaBGGOe+x+LFmx0S6mJlvZM=</X509SKI>
+										<X509Certificate>MIIFpDCCBV6gAwIBAgIMQOTN7YV6X5EAAGCaMA0GCSpwAAIAImUtDAUAMIIBljGBozCBoAYDVQQKHoGYBCAENQRBBD8EQwQxBDsEOAQ6BDAEPQRBBDoEPgQ1ACAEQwQ9BDgEQgQwBEAEPQQ+BDUAIAQ/BEAENQQ0BD8EQAQ4BE8EQgQ4BDUAIAAiBB0EMARGBDgEPgQ9BDAEOwRMBD0ESwQ5ACAERgQ1BD0EQgRAACAETQQ7BDUEOgRCBEAEPgQ9BD0ESwRFACAEQwRBBDsEQwQzACIxYTBfBgNVBAMeWAQgBDUEQQQ/BEMEMQQ7BDgEOgQwBD0EQQQ6BDgEOQAgBEMENAQ+BEEEQgQ+BDIENQRABE8ETgRJBDgEOQAgBEYENQQ9BEIEQAAgBBMEPgRBBCEEIwQeBBoxCzAJBgNVBAYTAkJZMRcwFQYDVQQIHg4EHAQ4BD0EQQQ6BDAETzEZMBcGA1UEBx4QBDMALgAgBBwEOAQ9BEEEOjErMCkGA1UECR4iBD8EQAAtBEIAIAQcBDAESAQ1BEAEPgQyBDAALAAgADIANTEdMBsGCSqGSIb3DQEJARYOcmNhQHBraS5nb3YuYnkwIhgPMjAxNjA4MjUwNzA4MjdaGA8yMDE4MDgyNDIwNTk1OVowggFnMUswSQYDVQQJDELRg9C7LtCR0YDQtdGB0YIt0JvQuNGC0L7QstGB0LrQsNGPLCDQtC4xMywg0LrQsNCxLjIwMywyMTAsIDIxMiwyMTQxSTBHBgNVBAMMQNCT0L7RgdGD0LTQsNGA0YHRgtCy0LXQvdC90L7QtSDQv9GA0LXQtNC/0YDQuNGP0YLQuNC1ICLQkdCi0JvQpiIxFTATBgNVBAQMDNCb0LDQt9GD0LrQvjEgMB4GCSqGSIb3DQEJARYRZGVrX2tpdkBiZWxpbnQuYnkxCzAJBgNVBAYTAkJZMUkwRwYDVQQKDEDQk9C+0YHRg9C00LDRgNGB0YLQstC10L3QvdC+0LUg0L/RgNC10LTQv9GA0LjRj9GC0LjQtSAi0JHQotCb0KYiMSQwIgYDVQQpDBvQkNC90L3QsCDQodC10YDQs9C10LXQstC90LAxFjAUBgNVBAcMDdCzLtCc0LjQvdGB0LowXTAYBgoqcAACACJlLQIBBgoqcAACACJlLQMBA0EAMQ3AHBInbT9LqoCHgWWX1JvZVT9DOzXEKfTnyjl0OmDANkNhmlSnOB1lrh8gU0zWvTvFyDTFnWyrfIgrrggICaOCAbAwggGsMB8GA1UdIwQYMBaAFDlegNXk2RxZPYZXdKec1b1BfTuAMAkGA1UdEwQCMAAwDwYDVR0PAQH/BAUDAwe4ADATBgNVHSUEDDAKBggrBgEFBQcDAjAdBgNVHQ4EFgQUgVhtyaBGGOe+x+LFmx0S6mJlvZMwMgYIKnABAgEBBQQEJjAkMCKADzIwMTYwODI1MDcwOTM2WoEPMjAzMTA4MjUwNzA5MzZaMCEGCSpwAQIBAQEBAgQUHhIAMQA5ADEAMQA4ADQAMgAzADUwKwYJKnABAgEBAQEBBB4eHAA0ADIAMgAxADEAOAAyAEEAMQAwADcAUABCADIwPQYJKnABAgEBAQIBBDAeLgAxAC4AMgAuADEAMQAyAC4AMQAuADIALgAxAC4AMQAuADEALgAyAC4AMQAuADQwdgYIKnABAgEBBQEEah5oBCEEPwQ1BEYEOAQwBDsEOARBBEIAIAQ/BD4AIARCBDAEPAQ+BDYENQQ9BD0EPgQ8BEMAIAQ0BDUEOgQ7BDAEQAQ4BEAEPgQyBDAEPQQ4BE4AIAAxACAEOgQwBEIENQQzBD4EQAQ4BDgwDQYJKnAAAgAiZS0MBQADMQCa85Or4qWsZpZGSojk9yO+3dtEqVj9lCHecYY5zp7SHB6Z100vuLInb2PtXqNgs4k=</X509Certificate>
+									</X509Data>
+								</KeyInfo>
+								<Object Id="TSID-61504455-044D-A208-615208681439">
+									<SignatureProperties>
+										<SignatureProperty Target="SID-61504455-044D-A208-615208681439">
+											<SigningTime xmlns="http://lab119.net/STBCrypt">2017-07-01T12:40:20.2578338Z</SigningTime>
+										</SignatureProperty>
+									</SignatureProperties>
+								</Object>
+							</Signature>
+							<Signature Id="SID-bd763849eac647c2b43106850ea4d459" xmlns="http://www.w3.org/2000/09/xmldsig#">
+								<SignedInfo>
+									<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+									<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#bign-with-hbelt"/>
+									<Reference URI="#bd763849eac647c2b43106850ea4d459">
+										<Transforms>
+											<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+										</Transforms>
+										<DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"/>
+										<DigestValue>S2QuCcE3GaqAUFKA0O11HSPqt+K6CHXSs6t3/4qgf9A=</DigestValue>
+									</Reference>
+									<Reference URI="#61504455-044D-A208-615208681439">
+										<Transforms>
+											<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+										</Transforms>
+										<DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"/>
+										<DigestValue>GqFMr+1OUybWYeLo+jOGfDnENnC/BTZ6flA6rMpaywY=</DigestValue>
+									</Reference>
+									<Reference URI="#SID-61504455-044D-A208-615208681439">
+										<Transforms>
+											<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+										</Transforms>
+										<DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"/>
+										<DigestValue>X7c7QAo6vmvGWvjar6XFfKZ9aApa9DqbqFknpHsW9PI=</DigestValue>
+									</Reference>
+									<Reference URI="#TSID-bd763849eac647c2b43106850ea4d459">
+										<Transforms>
+											<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+										</Transforms>
+										<DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"/>
+										<DigestValue>UlQbbL1vInvvBbNfSNWHKDWPhHhxaJ2rbVRM8wB/TQ8=</DigestValue>
+									</Reference>
+								</SignedInfo>
+								<SignatureValue>fsPqPolHy3EyC7wMweSae8un79M43gDxAT5RZ5Lunv4yQ9kTINd2cL0s195dWKiD</SignatureValue>
+								<KeyInfo>
+									<X509Data>
+										<X509IssuerSerial>
+											<X509IssuerName>E=rca@pki.gov.by, STREET="пр-т Машерова, 25", L=г. Минск, S=Минская, C=BY, CN=Республиканский удостоверяющий центр ГосСУОК, O="Республиканское унитарное предприятие ""Национальный центр электронных услуг"""</X509IssuerName>
+											<X509SerialNumber>20083714894914568228045916872</X509SerialNumber>
+										</X509IssuerSerial>
+										<X509SKI>399XMuJnegxM2tgrEPKhkHlYuZM=</X509SKI>
+										<X509Certificate>MIIE/jCCBLigAwIBAgIMQOTcDghEWgQAAQrIMA0GCSpwAAIAImUtDAUAMIIBljGBozCBoAYDVQQKHoGYBCAENQRBBD8EQwQxBDsEOAQ6BDAEPQRBBDoEPgQ1ACAEQwQ9BDgEQgQwBEAEPQQ+BDUAIAQ/BEAENQQ0BD8EQAQ4BE8EQgQ4BDUAIAAiBB0EMARGBDgEPgQ9BDAEOwRMBD0ESwQ5ACAERgQ1BD0EQgRAACAETQQ7BDUEOgRCBEAEPgQ9BD0ESwRFACAEQwRBBDsEQwQzACIxYTBfBgNVBAMeWAQgBDUEQQQ/BEMEMQQ7BDgEOgQwBD0EQQQ6BDgEOQAgBEMENAQ+BEEEQgQ+BDIENQRABE8ETgRJBDgEOQAgBEYENQQ9BEIEQAAgBBMEPgRBBCEEIwQeBBoxCzAJBgNVBAYTAkJZMRcwFQYDVQQIHg4EHAQ4BD0EQQQ6BDAETzEZMBcGA1UEBx4QBDMALgAgBBwEOAQ9BEEEOjErMCkGA1UECR4iBD8EQAAtBEIAIAQcBDAESAQ1BEAEPgQyBDAALAAgADIANTEdMBsGCSqGSIb3DQEJARYOcmNhQHBraS5nb3YuYnkwHhcNMTYxMjE2MDczMTI3WhcNMTcxMjIxMjA1OTU5WjCCAR8xKzApBgNVBAkMItGD0Lsu0JzQvtCz0LjQu9C10LLRgdC60LDRjywg0LQuNDMxPzA9BgNVBAMMNtCc0LjQvdGB0LrQsNGPINGA0LXQs9C40L7QvdCw0LvRjNC90LDRjyDRgtCw0LzQvtC20L3RjzETMBEGA1UEBAwK0KfQuNCz0LjRgDELMAkGA1UEBhMCQlkxPzA9BgNVBAoMNtCc0LjQvdGB0LrQsNGPINGA0LXQs9C40L7QvdCw0LvRjNC90LDRjyDRgtCw0LzQvtC20L3RjzE0MDIGA1UEKQwr0JLQtdGA0L7QvdC40LrQsCDQkNC70LXQutGB0LDQvdC00YDQvtCy0L3QsDEWMBQGA1UEBwwN0LMu0JzQuNC90YHQujBdMBgGCipwAAIAImUtAgEGCipwAAIAImUtAwEDQQDZBvll8JDP6pSHyyRoiWf3Op0NIwokGig0KWZwBFeq/+bT03a4jgG32Cd7qNVYmkAVQKFmutx9lL/Csvc/go10o4IBVjCCAVIwHwYDVR0jBBgwFoAUOV6A1eTZHFk9hld0p5zVvUF9O4AwCQYDVR0TBAIwADALBgNVHQ8EBAMCA7gwEwYDVR0lBAwwCgYIKwYBBQUHAwIwHQYDVR0OBBYEFN/fVzLiZ3oMTNrYKxDyoZB5WLmTMDIGCCpwAQIBAQUEBCYwJDAigA8yMDE2MTIxNjA3MzQzMVqBDzIwMzExMjE2MDczNDMxWjAhBgkqcAECAQEBAQIEFB4SADEAMAAwADMAMQA5ADgAOAAwMCsGCSpwAQIBAQEBAQQeHhwANAAxADEAMAAyADkANABCADAAMAA4AFAAQgA0MD0GCSpwAQIBAQECAQQwHi4AMQAuADIALgAxADEAMgAuADEALgAyAC4AMQAuADEALgAxAC4AMgAuADEALgA0MCAGCCpwAQIBAQUBBBQeEgQYBD0EQQQ/BDUEOgRCBD4EQDANBgkqcAACACJlLQwFAAMxAFHCU7QK6dyXerZRzWlky3oMvaieNNdQh4T7X39hWYTgoY6/YZJj2Z8LGt6L/FUCQQ==</X509Certificate>
+									</X509Data>
+								</KeyInfo>
+								<Object Id="TSID-bd763849eac647c2b43106850ea4d459">
+									<SignatureProperties>
+										<SignatureProperty Target="SID-bd763849eac647c2b43106850ea4d459">
+											<SigningTime xmlns="http://lab119.net/STBCrypt">2017-07-07T09:11:08.71875Z</SigningTime>
+										</SignatureProperty>
+									</SignatureProperties>
+								</Object>
+							</Signature>
+						</UVD_ZTK>
+					</DocumentBody>
+				</Document>
+			</NoticeInfo>
+			<Signature Id="SID-503ab24ce50648169387e1d09b60b301" xmlns="http://www.w3.org/2000/09/xmldsig#">
+				<SignedInfo>
+					<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+					<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#bign-with-hbelt"/>
+					<Reference URI="#503ab24ce50648169387e1d09b60b301">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"/>
+						<DigestValue>Gn1VG0yx7gCXy4OoA7lcOSwXXeVg8Xu1mHlP3E7mfpk=</DigestValue>
+					</Reference>
+					<Reference URI="#TSID-503ab24ce50648169387e1d09b60b301">
+						<Transforms>
+							<Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+						</Transforms>
+						<DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#hbelt"/>
+						<DigestValue>opHFSV6Bu7Lnx/RtMWXT2JEFy0hJKIlr2A6RvgfemuA=</DigestValue>
+					</Reference>
+				</SignedInfo>
+				<SignatureValue>yUw5RNE5PQxpODyu+WFMJ+jjrDZb7X2e9BcptFd7fx6wM6hcCwKLgfPvcbiQz8GF</SignatureValue>
+				<KeyInfo>
+					<X509Data>
+						<X509IssuerSerial>
+							<X509IssuerName>E=rca@pki.gov.by, STREET="пр-т Машерова, 25", L=г. Минск, S=Минская, C=BY, CN=Республиканский удостоверяющий центр ГосСУОК, O="Республиканское унитарное предприятие ""Национальный центр электронных услуг"""</X509IssuerName>
+							<X509SerialNumber>20083714894914568228045916872</X509SerialNumber>
+						</X509IssuerSerial>
+						<X509SKI>399XMuJnegxM2tgrEPKhkHlYuZM=</X509SKI>
+						<X509Certificate>MIIE/jCCBLigAwIBAgIMQOTcDghEWgQAAQrIMA0GCSpwAAIAImUtDAUAMIIBljGBozCBoAYDVQQKHoGYBCAENQRBBD8EQwQxBDsEOAQ6BDAEPQRBBDoEPgQ1ACAEQwQ9BDgEQgQwBEAEPQQ+BDUAIAQ/BEAENQQ0BD8EQAQ4BE8EQgQ4BDUAIAAiBB0EMARGBDgEPgQ9BDAEOwRMBD0ESwQ5ACAERgQ1BD0EQgRAACAETQQ7BDUEOgRCBEAEPgQ9BD0ESwRFACAEQwRBBDsEQwQzACIxYTBfBgNVBAMeWAQgBDUEQQQ/BEMEMQQ7BDgEOgQwBD0EQQQ6BDgEOQAgBEMENAQ+BEEEQgQ+BDIENQRABE8ETgRJBDgEOQAgBEYENQQ9BEIEQAAgBBMEPgRBBCEEIwQeBBoxCzAJBgNVBAYTAkJZMRcwFQYDVQQIHg4EHAQ4BD0EQQQ6BDAETzEZMBcGA1UEBx4QBDMALgAgBBwEOAQ9BEEEOjErMCkGA1UECR4iBD8EQAAtBEIAIAQcBDAESAQ1BEAEPgQyBDAALAAgADIANTEdMBsGCSqGSIb3DQEJARYOcmNhQHBraS5nb3YuYnkwHhcNMTYxMjE2MDczMTI3WhcNMTcxMjIxMjA1OTU5WjCCAR8xKzApBgNVBAkMItGD0Lsu0JzQvtCz0LjQu9C10LLRgdC60LDRjywg0LQuNDMxPzA9BgNVBAMMNtCc0LjQvdGB0LrQsNGPINGA0LXQs9C40L7QvdCw0LvRjNC90LDRjyDRgtCw0LzQvtC20L3RjzETMBEGA1UEBAwK0KfQuNCz0LjRgDELMAkGA1UEBhMCQlkxPzA9BgNVBAoMNtCc0LjQvdGB0LrQsNGPINGA0LXQs9C40L7QvdCw0LvRjNC90LDRjyDRgtCw0LzQvtC20L3RjzE0MDIGA1UEKQwr0JLQtdGA0L7QvdC40LrQsCDQkNC70LXQutGB0LDQvdC00YDQvtCy0L3QsDEWMBQGA1UEBwwN0LMu0JzQuNC90YHQujBdMBgGCipwAAIAImUtAgEGCipwAAIAImUtAwEDQQDZBvll8JDP6pSHyyRoiWf3Op0NIwokGig0KWZwBFeq/+bT03a4jgG32Cd7qNVYmkAVQKFmutx9lL/Csvc/go10o4IBVjCCAVIwHwYDVR0jBBgwFoAUOV6A1eTZHFk9hld0p5zVvUF9O4AwCQYDVR0TBAIwADALBgNVHQ8EBAMCA7gwEwYDVR0lBAwwCgYIKwYBBQUHAwIwHQYDVR0OBBYEFN/fVzLiZ3oMTNrYKxDyoZB5WLmTMDIGCCpwAQIBAQUEBCYwJDAigA8yMDE2MTIxNjA3MzQzMVqBDzIwMzExMjE2MDczNDMxWjAhBgkqcAECAQEBAQIEFB4SADEAMAAwADMAMQA5ADgAOAAwMCsGCSpwAQIBAQEBAQQeHhwANAAxADEAMAAyADkANABCADAAMAA4AFAAQgA0MD0GCSpwAQIBAQECAQQwHi4AMQAuADIALgAxADEAMgAuADEALgAyAC4AMQAuADEALgAxAC4AMgAuADEALgA0MCAGCCpwAQIBAQUBBBQeEgQYBD0EQQQ/BDUEOgRCBD4EQDANBgkqcAACACJlLQwFAAMxAFHCU7QK6dyXerZRzWlky3oMvaieNNdQh4T7X39hWYTgoY6/YZJj2Z8LGt6L/FUCQQ==</X509Certificate>
+					</X509Data>
+				</KeyInfo>
+				<Object Id="TSID-503ab24ce50648169387e1d09b60b301">
+					<SignatureProperties>
+						<SignatureProperty Target="SID-503ab24ce50648169387e1d09b60b301">
+							<SigningTime xmlns="http://lab119.net/STBCrypt">2017-07-07T09:11:26.734375Z</SigningTime>
+						</SignatureProperty>
+					</SignatureProperties>
+				</Object>
+			</Signature>
+		</DocumentReleaseNotice>
+	</s:Body>
+</s:Envelope>
