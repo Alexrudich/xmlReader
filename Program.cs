@@ -57,7 +57,7 @@ namespace SimleXmlReader
                     }
                     #endregion
                     #region SMGSNumber & SMGSDate
-                    XElement SMGS = doc.XPathSelectElement("descendant::Declarant[G02]");
+                    XElement SMGS = doc.XPathSelectElement("descendant::Declarant[G02]");// Path to parent node + [child node]
                     if (SMGS != null)
                     {
                         IEnumerable<XElement> keyWords = SMGS.Elements("G02");
@@ -68,11 +68,11 @@ namespace SimleXmlReader
                                     {
                                         SMGSNumber = itm.Element("NOM_DOC").Value,
                                         SMGSDate = itm.Element("DATE_DOC").Value,
-                                    }));
+                                    }).ToList());
                     }
                     #endregion
                     #region DeclaractionNumber & DeclarationDate
-                    XElement TD = doc.XPathSelectElement("descendant::Declarant[G02]");
+                    XElement TD = doc.XPathSelectElement("descendant::Declarant[G02]");// Path to parent node + [child node]
                     if (TD != null)
                     {
                         IEnumerable<XElement> keyWords = TD.Elements("G02");
@@ -87,7 +87,7 @@ namespace SimleXmlReader
                     }
                     #endregion
                     #region AccountNumber & AccountDate
-                    XElement account = doc.XPathSelectElement("descendant::Declarant[G02]");
+                    XElement account = doc.XPathSelectElement("descendant::Declarant[G02]");// Path to parent node + [child node]
                     if (account != null)
                     {
                         IEnumerable<XElement> keyWords = account.Elements("G02");
@@ -102,7 +102,7 @@ namespace SimleXmlReader
                     }
                     #endregion
                     #region RegistrationNumber & RegistrationDate
-                    XElement RegNumber = doc.XPathSelectElement("descendant::Custom[G_B/REGNUM_PTO]");
+                    XElement RegNumber = doc.XPathSelectElement("descendant::Custom[G_B/REGNUM_PTO]");// Path to parent node + [child node]
                     if (RegNumber != null)
                     {
                         IEnumerable<XElement> keyWords = RegNumber.Elements("G_B");
@@ -117,7 +117,7 @@ namespace SimleXmlReader
                     }
                     #endregion
                     #region TemproraryNumber & TemproraryDate
-                    XElement TempNumber = doc.XPathSelectElement("descendant::Custom[G_B/REGNUM_PTO]");
+                    XElement TempNumber = doc.XPathSelectElement("descendant::Custom[G_B/REGNUM_PTO]");// Path to parent node + [child node]
                     if (TempNumber != null)
                     {
                         IEnumerable<XElement> keyWords = RegNumber.Elements("G04");
@@ -131,6 +131,49 @@ namespace SimleXmlReader
                                            }));
                     }
                     #endregion
+                    #region Write message
+                    foreach (ParsedInfo p in NodeInfo)
+                    {
+                        if (p.TransportNumber != null)
+                        {
+                            Console.WriteLine("TransportNumber - {0}", p.TransportNumber);
+                        }
+                        if (p.SMGSNumber != null)
+                        {
+                            Console.WriteLine("SMGSNumber - {0}", p.SMGSNumber);
+                        }
+                        if (p.SMGSDate != null)
+                        {
+                            Console.WriteLine("SMGSDate - {0}", p.SMGSDate);
+                        }
+                        if (p.DeclaractionNumber != null)
+                        {
+                            Console.WriteLine("DeclaractionNumber - {0}", p.DeclaractionNumber);
+                        }
+                        if (p.DeclarationDate != null)
+                        {
+                            Console.WriteLine("DeclarationDate - {0}", p.DeclarationDate);
+                        }
+                        if (p.AccountNumber != null)
+                        {
+                            Console.WriteLine("AccountNumber - {0}", p.AccountNumber);
+                        }
+                        if (p.AccountDate != null)
+                        {
+                            Console.WriteLine("AccountDate - {0}", p.AccountDate);
+                        }
+                        if (p.RegistrationNumber != null)
+                        {
+                            Console.WriteLine("RegistrationNumber - {0}", p.RegistrationNumber);
+                        }
+                        if (p.RegistrationDate != null)
+                        {
+                            Console.WriteLine("RegistrationDate - {0}", p.RegistrationDate);
+                        }
+                       
+                    }
+                    #endregion
+                    Console.ReadKey();
                 }
             } 
         }
