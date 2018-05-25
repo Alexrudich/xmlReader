@@ -12,7 +12,7 @@ using System.Xml.XPath;
 
 namespace SimleXmlReader
 {
-    class ParsedInfo
+    public class ParsedInfo
     {
         public string TransportNumber { get; set; }
         public string SMGSNumber { get; set; }
@@ -33,7 +33,7 @@ namespace SimleXmlReader
         {
             string RootFolder = ConfigurationManager.AppSettings["RootFolder"];
             DirectoryInfo di = new DirectoryInfo(RootFolder);
-            FileInfo[] files = di.GetFiles("*.xml"); // Read xml files from folder
+              FileInfo[] files = di.GetFiles("*.xml"); // Read xml files from folder
             foreach (FileInfo file in files)
             {
                 if (file != null)
@@ -83,7 +83,7 @@ namespace SimleXmlReader
                                    {
                                        DeclaractionNumber = itm.Element("NOM_DOC").Value,
                                        DeclarationDate = itm.Element("DATE_DOC").Value,
-                                   }));
+                                  }).ToList());
                     }
                     #endregion
                     #region AccountNumber & AccountDate
@@ -98,7 +98,7 @@ namespace SimleXmlReader
                                    {
                                        AccountNumber = itm.Element("NOM_DOC").Value,
                                        AccountDate = itm.Element("DATE_DOC").Value,
-                                   }));
+                                   }).ToList());
                     }
                     #endregion
                     #region RegistrationNumber & RegistrationDate
@@ -113,7 +113,7 @@ namespace SimleXmlReader
                                    {
                                        RegistrationNumber = itm.Element("REGNUM_PTO").Value,
                                        RegistrationDate = itm.Element("DATE_REG").Value,
-                                   }));
+                                   }).ToList());
                     }
                     #endregion
                     #region TemproraryNumber & TemproraryDate
@@ -128,7 +128,7 @@ namespace SimleXmlReader
                                            {
                                                TemproraryNumber = itm.Element("NUM_RAZR").Value,
                                                TemproraryDate = itm.Element("DATE_RAZR").Value,
-                                           }));
+                                           }).ToList());
                     }
                     #endregion
                     #region Write message
@@ -170,11 +170,22 @@ namespace SimleXmlReader
                         {
                             Console.WriteLine("RegistrationDate - {0}", p.RegistrationDate);
                         }
-                       
+                        if (p.TemproraryNumber != null)
+                        {
+                            Console.WriteLine("TemproraryNumber - {0}", p.TemproraryNumber);
+                        }
+                        if (p.TemproraryDate != null)
+                        {
+                            Console.WriteLine("TemproraryDate - {0}\n", p.TemproraryDate);
+                        }
+
                     }
                     #endregion
-                    Console.ReadKey();
                 }
+                #region Moving processed file
+                //string ProcessedFileStr = string.Format("C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedFolder\\{0}", file);
+                //File.Move(file.FullName, ProcessedFileStr);
+                #endregion
             } 
         }
     }
