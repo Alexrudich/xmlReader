@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Permissions;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace SimleXmlReader
 {
@@ -17,176 +15,237 @@ namespace SimleXmlReader
         public string TransportNumber { get; set; }
         public string SMGSNumber { get; set; }
         public string SMGSDate { get; set; }
-        public string DeclaractionNumber { get; set; }
+        public string DeclarationNumber { get; set; }
         public string DeclarationDate { get; set; }
         public string AccountNumber { get; set; }
         public string AccountDate { get; set; }
         public string RegistrationNumber { get; set; }
         public string RegistrationDate { get; set; }
-        public string TemproraryNumber { get; set; }
-        public string TemproraryDate { get; set; }
-
+        public string TempDislocationNumber { get; set; }
+        public string TempDislocationDate { get; set; }
     }
+
     class Program
     {
         static void Main(string[] args)
         {
             string RootFolder = ConfigurationManager.AppSettings["RootFolder"];
             DirectoryInfo di = new DirectoryInfo(RootFolder);
-              FileInfo[] files = di.GetFiles("*.xml"); // Read xml files from folder
+            FileInfo[] files = di.GetFiles("*.xml"); // Read xml files from folder
             foreach (FileInfo file in files)
             {
+                string connectionString = ConfigurationManager.ConnectionStrings["KolCargo"].ConnectionString;
+                SqlConnection con = new SqlConnection(connectionString);
+
                 if (file != null)
                 {
+                    Console.WriteLine($"File: {file.FullName} is processed");
                     XDocument xdoc = XDocument.Load(file.FullName);
                     var tempObj = xdoc.ToString();   //xml to string
-                    XDocument doc = XDocument.Parse(tempObj);
-                    List<ParsedInfo> NodeInfo = new List<ParsedInfo>();
-                    #region TransportNumber
-                    XElement TrNumber = doc.XPathSelectElement("descendant::G01_N[G01]"); // Path to parent node + [child node]
-                    if (TrNumber != null)
-                    {
-                        IEnumerable<XElement> keyWords = TrNumber.Elements("G01");
-                        NodeInfo = (from itm in keyWords
-                                    where itm.Element("TR_NOMER") != null
-                                       
-                                    select new ParsedInfo()
-                                    {
-                                        TransportNumber = itm.Element("TR_NOMER").Value,
-                                    }).ToList();
-                    }
-                    #endregion
-                    #region SMGSNumber & SMGSDate
-                    XElement SMGS = doc.XPathSelectElement("descendant::Declarant[G02]");// Path to parent node + [child node]
-                    if (SMGS != null)
-                    {
-                        IEnumerable<XElement> keyWords = SMGS.Elements("G02");
-                        NodeInfo.AddRange((from itm in keyWords
-                                    where itm.Element("KOD_DOC") != null && itm.Element("KOD_DOC").Value == "02013"
 
-                                   select new ParsedInfo()
-                                    {
-                                        SMGSNumber = itm.Element("NOM_DOC").Value,
-                                        SMGSDate = itm.Element("DATE_DOC").Value,
-                                    }).ToList());
-                    }
-                    #endregion
-                    #region DeclaractionNumber & DeclarationDate
-                    XElement TD = doc.XPathSelectElement("descendant::Declarant[G02]");// Path to parent node + [child node]
-                    if (TD != null)
-                    {
-                        IEnumerable<XElement> keyWords = TD.Elements("G02");
-                        NodeInfo.AddRange((from itm in keyWords
-                                   where itm.Element("KOD_DOC") != null && itm.Element("KOD_DOC").Value == "09013"
+                    ParsedInfo allNodeInfo = new ParsedInfo();
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(tempObj);
+                    #region check specific xml data and add to class
+                    XmlNode TrNumberNode = doc.DocumentElement.SelectSingleNode("descendant::G01_N");
+                    string trNum = TrNumberNode.SelectSingleNode("G01").InnerText;
+                    allNodeInfo.TransportNumber = trNum;
 
-                                  select new ParsedInfo()
-                                   {
-                                       DeclaractionNumber = itm.Element("NOM_DOC").Value,
-                                       DeclarationDate = itm.Element("DATE_DOC").Value,
-                                  }).ToList());
-                    }
-                    #endregion
-                    #region AccountNumber & AccountDate
-                    XElement account = doc.XPathSelectElement("descendant::Declarant[G02]");// Path to parent node + [child node]
-                    if (account != null)
-                    {
-                        IEnumerable<XElement> keyWords = account.Elements("G02");
-                        NodeInfo.AddRange((from itm in keyWords
-                                   where itm.Element("KOD_DOC") != null && itm.Element("KOD_DOC").Value == "04021"
+                    XmlNode SMGSNode = doc.SelectSingleNode("//KOD_DOC[text()='02013']");
+                    string SMGSnum = SMGSNode.NextSibling.InnerText;
+                    string SMGSdt = SMGSNode.NextSibling.NextSibling.InnerText;
+                    allNodeInfo.SMGSNumber = SMGSnum;
+                    allNodeInfo.SMGSDate = SMGSdt;
 
-                                   select new ParsedInfo()
-                                   {
-                                       AccountNumber = itm.Element("NOM_DOC").Value,
-                                       AccountDate = itm.Element("DATE_DOC").Value,
-                                   }).ToList());
-                    }
-                    #endregion
-                    #region RegistrationNumber & RegistrationDate
-                    XElement RegNumber = doc.XPathSelectElement("descendant::Custom[G_B/REGNUM_PTO]");// Path to parent node + [child node]
-                    if (RegNumber != null)
-                    {
-                        IEnumerable<XElement> keyWords = RegNumber.Elements("G_B");
-                        NodeInfo.AddRange((from itm in keyWords
-                                   where itm.Element("REGNUM_PTO") != null && itm.Element("DATE_REG") != null
+                    XmlNode DeclarationNode = doc.SelectSingleNode("//KOD_DOC[text()='09013']");
+                    string DeclNumb = DeclarationNode.NextSibling.InnerText;
+                    string DeclDate = DeclarationNode.NextSibling.NextSibling.InnerText;
+                    allNodeInfo.DeclarationNumber = DeclNumb;
+                    allNodeInfo.DeclarationDate = DeclNumb;
 
-                                   select new ParsedInfo()
-                                   {
-                                       RegistrationNumber = itm.Element("REGNUM_PTO").Value,
-                                       RegistrationDate = itm.Element("DATE_REG").Value,
-                                   }).ToList());
-                    }
-                    #endregion
-                    #region TemproraryNumber & TemproraryDate
-                    XElement TempNumber = doc.XPathSelectElement("descendant::Custom[G_B/REGNUM_PTO]");// Path to parent node + [child node]
-                    if (TempNumber != null)
-                    {
-                        IEnumerable<XElement> keyWords = RegNumber.Elements("G04");
-                        NodeInfo.AddRange((from itm in keyWords
-                                           where itm.Element("NUM_RAZR") != null && itm.Element("DATE_RAZR") != null
+                    XmlNode AccountNode = doc.SelectSingleNode("//KOD_DOC[text()='04021']");
+                    string AcNumb = AccountNode.NextSibling.InnerText;
+                    string AcDate = AccountNode.NextSibling.NextSibling.InnerText;
+                    allNodeInfo.AccountNumber = AcNumb;
+                    allNodeInfo.AccountDate = AcDate;
 
-                                           select new ParsedInfo()
-                                           {
-                                               TemproraryNumber = itm.Element("NUM_RAZR").Value,
-                                               TemproraryDate = itm.Element("DATE_RAZR").Value,
-                                           }).ToList());
-                    }
-                    #endregion
-                    #region Write message
-                    foreach (ParsedInfo p in NodeInfo)
-                    {
-                        if (p.TransportNumber != null)
-                        {
-                            Console.WriteLine("TransportNumber - {0}", p.TransportNumber);
-                        }
-                        if (p.SMGSNumber != null)
-                        {
-                            Console.WriteLine("SMGSNumber - {0}", p.SMGSNumber);
-                        }
-                        if (p.SMGSDate != null)
-                        {
-                            Console.WriteLine("SMGSDate - {0}", p.SMGSDate);
-                        }
-                        if (p.DeclaractionNumber != null)
-                        {
-                            Console.WriteLine("DeclaractionNumber - {0}", p.DeclaractionNumber);
-                        }
-                        if (p.DeclarationDate != null)
-                        {
-                            Console.WriteLine("DeclarationDate - {0}", p.DeclarationDate);
-                        }
-                        if (p.AccountNumber != null)
-                        {
-                            Console.WriteLine("AccountNumber - {0}", p.AccountNumber);
-                        }
-                        if (p.AccountDate != null)
-                        {
-                            Console.WriteLine("AccountDate - {0}", p.AccountDate);
-                        }
-                        if (p.RegistrationNumber != null)
-                        {
-                            Console.WriteLine("RegistrationNumber - {0}", p.RegistrationNumber);
-                        }
-                        if (p.RegistrationDate != null)
-                        {
-                            Console.WriteLine("RegistrationDate - {0}", p.RegistrationDate);
-                        }
-                        if (p.TemproraryNumber != null)
-                        {
-                            Console.WriteLine("TemproraryNumber - {0}", p.TemproraryNumber);
-                        }
-                        if (p.TemproraryDate != null)
-                        {
-                            Console.WriteLine("TemproraryDate - {0}\n", p.TemproraryDate);
-                        }
+                    XmlNode RegNumberNode = doc.SelectSingleNode("//G_B");
+                    string RegNum = RegNumberNode.SelectSingleNode("REGNUM_PTO").InnerText; ;
+                    string RegDate = RegNumberNode.SelectSingleNode("DATE_REG").InnerText;
+                    allNodeInfo.RegistrationNumber = RegNum;
+                    allNodeInfo.RegistrationDate = RegDate;
 
+                    XmlNode TempNumberNode = doc.SelectSingleNode("//G04");
+                    allNodeInfo.TempDislocationNumber = TempNumberNode.SelectSingleNode("NUM_RAZR").InnerText;
+                    string TempDisNum = TempNumberNode.SelectSingleNode("NUM_RAZR").InnerText;
+                    string TempDisDate = TempNumberNode.SelectSingleNode("DATE_RAZR").InnerText;
+                    allNodeInfo.TempDislocationNumber = TempDisNum;
+                    allNodeInfo.TempDislocationDate = TempDisDate;
+                    #endregion
+                    #region add to database
+                    string querry = @"IF EXISTS(SELECT * FROM dbo.KolCargo WHERE TransportNumber=@trNum) 
+                    UPDATE dbo.KolCargo 
+                    SET TransportNumber = @trNum,
+                        SMGSNumber = @SMGSnum,
+                        SmgsDate = @SMGSdt,
+                        DeclarationNumber = @DeclNumb,
+                        DeclarationDate = @DeclNumb,
+                        AccountNumber = @AcNumb,
+                        AccountDate = @AcDate,
+                        RegistrationNumber = @RegNum,
+                        RegistrationDate = @RegDate,
+                        TempDislocationNumber = @TempDisNum,
+                        TempDislocationDate = @TempDisDate
+                    WHERE TransportNumber=@trNum
+
+                    ELSE INSERT INTO dbo.KolCargo(TransportNumber,SmgsNumber,SmgsDate,DeclarationNumber,DeclarationDate,AccountNumber,AccountDate,RegistrationNumber,RegistrationDate,TempDislocationNumber,TempDislocationDate) 
+                    VALUES(@trNum,@SMGSnum,@SMGSdt,@DeclNumb,@DeclDate,@AcNumb,@AcDate,@RegNum,@RegDate,@TempDisNum,@TempDisDate);";
+
+                    using (SqlCommand updSql = new SqlCommand(querry, con))
+                    {
+                        updSql.Parameters.AddWithValue("@trNum", trNum);
+                        updSql.Parameters.AddWithValue("@SMGSnum", SMGSnum);
+                        updSql.Parameters.AddWithValue("@SMGSdt", SMGSdt);
+                        updSql.Parameters.AddWithValue("@DeclNumb", DeclNumb);
+                        updSql.Parameters.AddWithValue("@DeclDate", DeclDate);
+                        updSql.Parameters.AddWithValue("@AcNumb", AcNumb);
+                        updSql.Parameters.AddWithValue("@AcDate", AcDate);
+                        updSql.Parameters.AddWithValue("@RegNum", RegNum);
+                        updSql.Parameters.AddWithValue("@RegDate", RegDate);
+                        updSql.Parameters.AddWithValue("@TempDisNum", TempDisNum);
+                        updSql.Parameters.AddWithValue("@TempDisDate", TempDisDate);
+
+                        con.Open();
+                        updSql.ExecuteNonQuery();
+                        con.Close();
                     }
+                    #region Moving processed file
+                    string ProcessedFileStr = string.Format($"C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedFolder\\{file}");
+                    try
+                    {
+                        File.Move(file.FullName, ProcessedFileStr);
+                    }
+                    catch (IOException) //if file already exist 
+                    { }
                     #endregion
                 }
-                #region Moving processed file
-                //string ProcessedFileStr = string.Format("C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedFolder\\{0}", file);
-                //File.Move(file.FullName, ProcessedFileStr);
-                #endregion
-            } 
+            }
+            #endregion
+            {
+                FileSystemWatcher watcher = new FileSystemWatcher(); ;
+                watcher.Path = ConfigurationManager.AppSettings["RootFolder"];
+                watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+                   | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+                watcher.Filter = "*.xml*";
+                watcher.Created += new FileSystemEventHandler(RunXmlReader);
+                // Begin watching.
+                watcher.EnableRaisingEvents = true;
+            }
+            Console.WriteLine("Press \'q\' to quit the console.");
+            while (Console.Read() != 'q') ;
         }
+        //[PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+
+        public static void RunXmlReader(object source, FileSystemEventArgs e)
+        {    
+            string RootFolder = ConfigurationManager.AppSettings["RootFolder"];
+            DirectoryInfo di = new DirectoryInfo(RootFolder);
+            FileInfo[] files = di.GetFiles("*.xml"); // Read xml files from folder
+            foreach (FileInfo file in files)
+            {
+                string connectionString = ConfigurationManager.ConnectionStrings["KolCargo"].ConnectionString;
+                SqlConnection con = new SqlConnection(connectionString);
+
+                if (file != null)
+                {
+                    Console.WriteLine($"File: {file.FullName} is processed");
+                    XDocument xdoc = XDocument.Load(file.FullName);
+                    var tempObj = xdoc.ToString();   //xml to string
+
+                    ParsedInfo allNodeInfo = new ParsedInfo();
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(tempObj);
+                    #region check specific xml data and add to class
+                    XmlNode TrNumberNode = doc.DocumentElement.SelectSingleNode("descendant::G01_N");
+                    string trNum = TrNumberNode.SelectSingleNode("G01").InnerText;
+                    allNodeInfo.TransportNumber = trNum;
+
+                    XmlNode SMGSNode = doc.SelectSingleNode("//KOD_DOC[text()='02013']");
+                    string SMGSnum = SMGSNode.NextSibling.InnerText;
+                    string SMGSdt = SMGSNode.NextSibling.NextSibling.InnerText;
+                    allNodeInfo.SMGSNumber = SMGSnum;
+                    allNodeInfo.SMGSDate = SMGSdt;
+
+                    XmlNode DeclarationNode = doc.SelectSingleNode("//KOD_DOC[text()='09013']");
+                    string DeclNumb = DeclarationNode.NextSibling.InnerText;
+                    string DeclDate = DeclarationNode.NextSibling.NextSibling.InnerText;
+                    allNodeInfo.DeclarationNumber = DeclNumb;
+                    allNodeInfo.DeclarationDate = DeclNumb;
+
+                    XmlNode AccountNode = doc.SelectSingleNode("//KOD_DOC[text()='04021']");
+                    string AcNumb = AccountNode.NextSibling.InnerText;
+                    string AcDate = AccountNode.NextSibling.NextSibling.InnerText;
+                    allNodeInfo.AccountNumber = AcNumb;
+                    allNodeInfo.AccountDate = AcDate;
+
+                    XmlNode RegNumberNode = doc.SelectSingleNode("//G_B");
+                    string RegNum = RegNumberNode.SelectSingleNode("REGNUM_PTO").InnerText; ;
+                    string RegDate = RegNumberNode.SelectSingleNode("DATE_REG").InnerText;
+                    allNodeInfo.RegistrationNumber = RegNum;
+                    allNodeInfo.RegistrationDate = RegDate;
+
+                    XmlNode TempNumberNode = doc.SelectSingleNode("//G04");
+                    allNodeInfo.TempDislocationNumber = TempNumberNode.SelectSingleNode("NUM_RAZR").InnerText;
+                    string TempDisNum = TempNumberNode.SelectSingleNode("NUM_RAZR").InnerText;
+                    string TempDisDate = TempNumberNode.SelectSingleNode("DATE_RAZR").InnerText;
+                    allNodeInfo.TempDislocationNumber = TempDisNum;
+                    allNodeInfo.TempDislocationDate = TempDisDate;
+                    #endregion
+                    #region add to database
+                    string querry = @"IF EXISTS(SELECT * FROM dbo.KolCargo WHERE TransportNumber=@trNum) 
+                    UPDATE dbo.KolCargo 
+                    SET TransportNumber = @trNum,
+                        SMGSNumber = @SMGSnum,
+                        SmgsDate = @SMGSdt,
+                        DeclarationNumber = @DeclNumb,
+                        DeclarationDate = @DeclNumb,
+                        AccountNumber = @AcNumb,
+                        AccountDate = @AcDate,
+                        RegistrationNumber = @RegNum,
+                        RegistrationDate = @RegDate,
+                        TempDislocationNumber = @TempDisNum,
+                        TempDislocationDate = @TempDisDate
+                    WHERE TransportNumber=@trNum
+
+                    ELSE INSERT INTO dbo.KolCargo(TransportNumber,SmgsNumber,SmgsDate,DeclarationNumber,DeclarationDate,AccountNumber,AccountDate,RegistrationNumber,RegistrationDate,TempDislocationNumber,TempDislocationDate) 
+                    VALUES(@trNum,@SMGSnum,@SMGSdt,@DeclNumb,@DeclDate,@AcNumb,@AcDate,@RegNum,@RegDate,@TempDisNum,@TempDisDate);";
+
+                    using (SqlCommand updSql = new SqlCommand(querry, con))
+                    {
+                        updSql.Parameters.AddWithValue("@trNum", trNum);
+                        updSql.Parameters.AddWithValue("@SMGSnum", SMGSnum);
+                        updSql.Parameters.AddWithValue("@SMGSdt", SMGSdt);
+                        updSql.Parameters.AddWithValue("@DeclNumb", DeclNumb);
+                        updSql.Parameters.AddWithValue("@DeclDate", DeclDate);
+                        updSql.Parameters.AddWithValue("@AcNumb", AcNumb);
+                        updSql.Parameters.AddWithValue("@AcDate", AcDate);
+                        updSql.Parameters.AddWithValue("@RegNum", RegNum);
+                        updSql.Parameters.AddWithValue("@RegDate", RegDate);
+                        updSql.Parameters.AddWithValue("@TempDisNum", TempDisNum);
+                        updSql.Parameters.AddWithValue("@TempDisDate", TempDisDate);
+
+                        con.Open();
+                        updSql.ExecuteNonQuery();
+                        con.Close();
+                    }
+                    #region Moving processed file
+                    string ProcessedFileStr = string.Format($"C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedFolder\\{file}");
+                    File.Move(file.FullName, ProcessedFileStr);
+                    #endregion
+                }
+            }
+            #endregion
+        }
+
     }
 }
