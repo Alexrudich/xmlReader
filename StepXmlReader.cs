@@ -11,16 +11,16 @@ using XmlReader;
 
 namespace XmlReader
 {
-    public class KolXmlReader
+    public class StepXmlReader
     {
-        public static void RunKolReader()
+        public static void RunStepReader()
         {
-            string KolFolder = ConfigurationManager.AppSettings["KolFolder"];
-            DirectoryInfo di = new DirectoryInfo(KolFolder);
+            string StepFolder = ConfigurationManager.AppSettings["StepFolder"];
+            DirectoryInfo di = new DirectoryInfo(StepFolder);
             FileInfo[] files = di.GetFiles("*.xml"); // Read xml files from folder
             foreach (FileInfo file in files)
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["KolCargo"].ConnectionString;
+                string connectionString = ConfigurationManager.ConnectionStrings["StepCargo"].ConnectionString;
                 SqlConnection con = new SqlConnection(connectionString);
 
                 if (file != null)
@@ -69,8 +69,8 @@ namespace XmlReader
                     allNodeInfo.TempDislocationDate = TempDisDate;
                     #endregion
                     #region add to database
-                    string querry = @"IF EXISTS(SELECT * FROM dbo.KolCargo WHERE TransportNumber=@trNum) 
-                    UPDATE dbo.KolCargo 
+                    string querry = @"IF EXISTS(SELECT * FROM dbo.StepCargo WHERE TransportNumber=@trNum) 
+                    UPDATE dbo.StepCargo 
                     SET TransportNumber = @trNum,
                         SMGSNumber = @SMGSnum,
                         SmgsDate = @SMGSdt,
@@ -84,7 +84,7 @@ namespace XmlReader
                         TempDislocationDate = @TempDisDate
                     WHERE TransportNumber=@trNum
 
-                    ELSE INSERT INTO dbo.KolCargo(TransportNumber,SmgsNumber,SmgsDate,DeclarationNumber,DeclarationDate,AccountNumber,AccountDate,RegistrationNumber,RegistrationDate,TempDislocationNumber,TempDislocationDate) 
+                    ELSE INSERT INTO dbo.StepCargo(TransportNumber,SmgsNumber,SmgsDate,DeclarationNumber,DeclarationDate,AccountNumber,AccountDate,RegistrationNumber,RegistrationDate,TempDislocationNumber,TempDislocationDate) 
                     VALUES(@trNum,@SMGSnum,@SMGSdt,@DeclNumb,@DeclDate,@AcNumb,@AcDate,@RegNum,@RegDate,@TempDisNum,@TempDisDate);";
 
                     using (SqlCommand updSql = new SqlCommand(querry, con))
@@ -106,7 +106,7 @@ namespace XmlReader
                         con.Close();
                     }
                     #region Moving processed file
-                    string ProcessedFileStr = string.Format($"C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedKolFolder\\{file}");
+                    string ProcessedFileStr = string.Format($"C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedStepFolder\\{file}");
                     try
                     {
                         File.Move(file.FullName, ProcessedFileStr);
@@ -119,7 +119,7 @@ namespace XmlReader
             #endregion
             {
                 FileSystemWatcher watcher = new FileSystemWatcher(); ;
-                watcher.Path = ConfigurationManager.AppSettings["KolFolder"];
+                watcher.Path = ConfigurationManager.AppSettings["StepFolder"];
                 watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                    | NotifyFilters.FileName | NotifyFilters.DirectoryName;
                 watcher.Filter = "*.xml*";
@@ -127,17 +127,16 @@ namespace XmlReader
                 // Begin watching.
                 watcher.EnableRaisingEvents = true;
             }
-            //Console.WriteLine("Press \'q\' to quit the console.");
-            //while (Console.Read() != 'q') ;
+           
         }
         public static void RunXmlReader(object source, FileSystemEventArgs e)
         {
-            string KolFolder = ConfigurationManager.AppSettings["KolFolder"];
-            DirectoryInfo di = new DirectoryInfo(KolFolder);
+            string StepFolder = ConfigurationManager.AppSettings["StepFolder"];
+            DirectoryInfo di = new DirectoryInfo(StepFolder);
             FileInfo[] files = di.GetFiles("*.xml"); // Read xml files from folder
             foreach (FileInfo file in files)
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["KolCargo"].ConnectionString;
+                string connectionString = ConfigurationManager.ConnectionStrings["StepCargo"].ConnectionString;
                 SqlConnection con = new SqlConnection(connectionString);
 
                 if (file != null)
@@ -186,8 +185,8 @@ namespace XmlReader
                     allNodeInfo.TempDislocationDate = TempDisDate;
                     #endregion
                     #region add to database
-                    string querry = @"IF EXISTS(SELECT * FROM dbo.KolCargo WHERE TransportNumber=@trNum) 
-                    UPDATE dbo.KolCargo 
+                    string querry = @"IF EXISTS(SELECT * FROM dbo.StepCargo WHERE TransportNumber=@trNum) 
+                    UPDATE dbo.StepCargo 
                     SET TransportNumber = @trNum,
                         SMGSNumber = @SMGSnum,
                         SmgsDate = @SMGSdt,
@@ -201,7 +200,7 @@ namespace XmlReader
                         TempDislocationDate = @TempDisDate
                     WHERE TransportNumber=@trNum
 
-                    ELSE INSERT INTO dbo.KolCargo(TransportNumber,SmgsNumber,SmgsDate,DeclarationNumber,DeclarationDate,AccountNumber,AccountDate,RegistrationNumber,RegistrationDate,TempDislocationNumber,TempDislocationDate) 
+                    ELSE INSERT INTO dbo.StepCargo(TransportNumber,SmgsNumber,SmgsDate,DeclarationNumber,DeclarationDate,AccountNumber,AccountDate,RegistrationNumber,RegistrationDate,TempDislocationNumber,TempDislocationDate) 
                     VALUES(@trNum,@SMGSnum,@SMGSdt,@DeclNumb,@DeclDate,@AcNumb,@AcDate,@RegNum,@RegDate,@TempDisNum,@TempDisDate);";
 
                     using (SqlCommand updSql = new SqlCommand(querry, con))
@@ -223,7 +222,7 @@ namespace XmlReader
                         con.Close();
                     }
                     #region Moving processed file
-                    string ProcessedFileStr = string.Format($"C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedKolFolder\\{file}");
+                    string ProcessedFileStr = string.Format($"C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedStepFolder\\{file}");
                     File.Move(file.FullName, ProcessedFileStr);
                     #endregion
                 }

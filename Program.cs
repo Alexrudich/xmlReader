@@ -16,8 +16,8 @@ namespace SimleXmlReader
         static void Main(string[] args)
         {
             #region default code
-            //string RootFolder = ConfigurationManager.AppSettings["RootFolder"];
-            //DirectoryInfo di = new DirectoryInfo(RootFolder);
+            //string KolFolder = ConfigurationManager.AppSettings["KolFolder"];
+            //DirectoryInfo di = new DirectoryInfo(KolFolder);
             //FileInfo[] files = di.GetFiles("*.xml"); // Read xml files from folder
             //foreach (FileInfo file in files)
             //{
@@ -107,7 +107,7 @@ namespace SimleXmlReader
             //            con.Close();
             //        }
             //        #region Moving processed file
-            //        string ProcessedFileStr = string.Format($"C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedFolder\\{file}");
+            //        string ProcessedFileStr = string.Format($"C:\\Users\\a.rudich\\Desktop\\Test\\ProcessedKolFolder\\{file}");
             //        try
             //        {
             //            File.Move(file.FullName, ProcessedFileStr);
@@ -120,7 +120,7 @@ namespace SimleXmlReader
             //#endregion
             //{
             //    FileSystemWatcher watcher = new FileSystemWatcher(); ;
-            //    watcher.Path = ConfigurationManager.AppSettings["RootFolder"];
+            //    watcher.Path = ConfigurationManager.AppSettings["KolFolder"];
             //    watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
             //       | NotifyFilters.FileName | NotifyFilters.DirectoryName;
             //    watcher.Filter = "*.xml*";
@@ -133,7 +133,10 @@ namespace SimleXmlReader
             #endregion
             {
                KolXmlReader.RunKolReader();
+               StepXmlReader.RunStepReader();
             }
+            Console.WriteLine("Press \'q\' to quit the console.");
+            while (Console.Read() != 'q') ;
         }
         //[PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
 
