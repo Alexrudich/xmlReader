@@ -11,9 +11,29 @@ using XmlReader;
 
 namespace XmlReader
 {
-    public class KolXmlReader
+    public class BelintXmlReader
     {
-        public static void RunKolReader()
+        private string _watchedFolder;
+        private string _tableName;
+        public BelintXmlReader(string watchedFolder, string tableName)
+        {
+            _watchedFolder = watchedFolder;
+            _tableName = tableName;
+        }
+
+        private void RunWatcher()
+        {
+            FileSystemWatcher watcher = new FileSystemWatcher(); ;
+            watcher.Path = _watchedFolder;
+            watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+               | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+            watcher.Filter = "*.xml*";
+            watcher.Created += new FileSystemEventHandler(RunXmlReader);
+            // Begin watching.
+            watcher.EnableRaisingEvents = true;
+        }
+
+        public void RunReader()
         {
             string KolFolder = ConfigurationManager.AppSettings["KolFolder"];
             DirectoryInfo di = new DirectoryInfo(KolFolder);
@@ -69,7 +89,8 @@ namespace XmlReader
                     allNodeInfo.TempDislocationDate = TempDisDate;
                     #endregion
                     #region add to database
-                    string querry = @"IF EXISTS(SELECT * FROM dbo.KolCargo WHERE TransportNumber=@trNum) 
+                    //TODO: change to _tableName
+                    string querry = @"IF EXISTS(SELECT * FROM dbo.{0} WHERE TransportNumber=@trNum) 
                     UPDATE dbo.KolCargo 
                     SET TransportNumber = @trNum,
                         SMGSNumber = @SMGSnum,
@@ -117,20 +138,12 @@ namespace XmlReader
                 }
             }
             #endregion
-            {
-                FileSystemWatcher watcher = new FileSystemWatcher(); ;
-                watcher.Path = ConfigurationManager.AppSettings["KolFolder"];
-                watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
-                   | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-                watcher.Filter = "*.xml*";
-                watcher.Created += new FileSystemEventHandler(RunXmlReader);
-                // Begin watching.
-                watcher.EnableRaisingEvents = true;
-            }
-            //Console.WriteLine("Press \'q\' to quit the console.");
-            //while (Console.Read() != 'q') ;
+
+            RunWatcher(ConfigurationManager.AppSettings["KolFolder"]);
+            RunWatcher(ConfigurationManager.AppSettings["StepFolder"]);
         }
-        public static void RunXmlReader(object source, FileSystemEventArgs e)
+
+        public void RunXmlReader(object source, FileSystemEventArgs e)
         {
             string KolFolder = ConfigurationManager.AppSettings["KolFolder"];
             DirectoryInfo di = new DirectoryInfo(KolFolder);
