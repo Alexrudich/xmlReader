@@ -18,8 +18,8 @@ namespace SimleXmlReader
             {
                 StepXmlReader.RunStepReader();
                 KolXmlReader.RunKolReader();
-                Console.WriteLine("Press \'q\' to quit the console.");
-                while (Console.Read() != 'q') ;
+                //Console.WriteLine("Press \'q\' to quit the console.");
+                //while (Console.Read() != 'q') ;
             }
           
         }
