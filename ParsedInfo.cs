@@ -19,5 +19,7 @@ namespace XmlReader
         public string RegistrationDate { get; set; }
         public string TempDislocationNumber { get; set; }
         public string TempDislocationDate { get; set; }
+        //public int CargoStationID { get; set; }
+        
     }
 }

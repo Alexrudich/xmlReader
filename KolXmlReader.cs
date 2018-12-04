@@ -23,7 +23,7 @@ namespace XmlReader
             int count = 0;
             foreach (FileInfo file in files)
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["KolCargo"].ConnectionString;
+                string connectionString = ConfigurationManager.ConnectionStrings["StepKolCargo"].ConnectionString;
                 SqlConnection con = new SqlConnection(connectionString);
                 var maxCount = files.Length; //total files in rootfolder
                 if (file != null)
@@ -85,28 +85,10 @@ namespace XmlReader
                         string TempDisDate = TempNumberNode.SelectSingleNode("DATE_RAZR").InnerText;
                         allNodeInfo.TempDislocationNumber = TempDisNum;
                         allNodeInfo.TempDislocationDate = TempDisDate;
+                        int CargoStationID = 1;
                         string CurFileName = file.Name.ToString();
                         #endregion
-                        #region add to database
-                        string querry = @"IF EXISTS(SELECT * FROM dbo.KolCargo WHERE TransportNumber=@trNum) 
-                        UPDATE dbo.KolCargo 
-                        SET FileName = @CurFileName,
-                            TransportNumber = @trNum,
-                            SMGSNumber = @SMGSnum,
-                            SmgsDate = @SMGSdt,
-                            DeclarationNumber = @DeclNumb,
-                            DeclarationDate = @DeclNumb,
-                            AccountNumber = @AcNumb,
-                            AccountDate = @AcDate,
-                            RegistrationNumber = @RegNum,
-                            RegistrationDate = @RegDate,
-                            TempDislocationNumber = @TempDisNum,
-                            TempDislocationDate = @TempDisDate
-                        WHERE TransportNumber=@trNum
-
-                        ELSE INSERT INTO dbo.KolCargo(FileName,TransportNumber,SmgsNumber,SmgsDate,DeclarationNumber,DeclarationDate,AccountNumber,AccountDate,RegistrationNumber,RegistrationDate,TempDislocationNumber,TempDislocationDate) 
-                        VALUES(@CurFileName,@trNum,@SMGSnum,@SMGSdt,@DeclNumb,@DeclDate,@AcNumb,@AcDate,@RegNum,@RegDate,@TempDisNum,@TempDisDate);";
-
+                        string querry = sqlQuerry.sqlRequest;
                         using (SqlCommand updSql = new SqlCommand(querry, con))
                         {
                             updSql.Parameters.AddWithValue("@CurFileName", CurFileName);
@@ -121,17 +103,16 @@ namespace XmlReader
                             updSql.Parameters.AddWithValue("@RegDate", RegDate);
                             updSql.Parameters.AddWithValue("@TempDisNum", TempDisNum);
                             updSql.Parameters.AddWithValue("@TempDisDate", TempDisDate);
-
+                            updSql.Parameters.AddWithValue("@CargoStID", CargoStationID);
                             con.Open();
                             updSql.ExecuteNonQuery();
                             con.Close();
                         }
-
                     }
                     catch (NullReferenceException)
                     {
                     }
-                    string delReq = @"DELETE FROM dbo.KolCargo WHERE DATEADD(WEEK, 6, RegistrationDate) < getdate()";
+                    string delReq = @"set language british; DELETE FROM dbo.StepKolCargo WHERE DATEADD(WEEK, 6, RegistrationDate) < getdate()";
                     using (SqlCommand deleteOldData = new SqlCommand(delReq, con))
                     {
                         con.Open();
@@ -160,10 +141,7 @@ namespace XmlReader
                     #endregion
                     Console.WriteLine($"File: {file.FullName} is processed at {DateTime.Now.ToShortTimeString()} {count}/{maxCount}");
                 }
-
-
             }
-            #endregion
         }
     }
 }
